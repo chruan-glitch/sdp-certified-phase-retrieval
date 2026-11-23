@@ -1,77 +1,185 @@
-# $\ell_2$ Adversarial Robustness Certification for Phase Retrieval Neural Networks (SDP + RLT)
+# Certified Robustness of DNN Phase Retrieval via SDP (+ RLT)
 
-This repository evaluates the $\ell_2$ adversarial robustness certification tightness and computational runtime of a 3-layer Multilayer Perceptron (MLP) trained for Phase Retrieval on the $8 \times 8$ MNIST dataset. By incorporating pairwise product constraints via the Reformulation-Linearization Technique (RLT) into standard Semidefinite Programming (SDP), **SDP+RLT** substantially tightens the certified upper bounds and expands the non-vacuous certification regime.
+Semidefinite-programming (SDP) certificates for a small ReLU network that solves real-valued phase retrieval on 8×8 MNIST.
+Given measurements `y = (Ax)^2` perturbed by any `delta` with `||delta||_2 <= eps`, we compute a **certified upper bound** on the
+worst-case squared reconstruction error of the network, and measure how tight it is against PGD attacks (lower bounds),
+cheap baselines (IBP, Lipschitz, LipSDP) and PhaseLift.
 
-## Key Highlights
+ECE285 course project (UCSD) by Chengen Ruan and Xinqi Li.
 
-1. **Significant Bound Tightening via SDP+RLT**: Adding pairwise neuron product constraints (RLT) to the plain SDP relaxation tightens the certified worst-case upper bound by up to **87.1%** (at $\epsilon_{\text{rel}} = 0.13$). Compared to empirical PGD attack lower bounds, the median ratio of the SDP+RLT upper bound is virtually exact at $\epsilon_{\text{rel}} = 0.05$ ($1.00\times$) and remains controlled at $2.60\times$ even at $\epsilon_{\text{rel}} = 0.13$.
-2. **Substantially Expanded Non-Vacuous Regime**: Using the mean squared error of the trivial zero estimator $f = 0$ (threshold `1.0`) as the vacuousness boundary, IBP and Lipschitz-based methods become completely vacuous by $\epsilon_{\text{rel}} = 0.05$, and plain SDP becomes vacuous at $\epsilon_{\text{rel}} = 0.10$. In contrast, **SDP+RLT extends the non-vacuous certification radius to $\epsilon_{\text{rel}} = 0.13$**, maintaining non-vacuous guarantees on 19 out of 20 test samples.
-3. **Ultra-Fast Inference vs. ReLU-Dependent Certification Runtime**: Neural network forward inference takes only **0.05 ms** per sample—over $60,000\times$ faster than classical convex optimization via PhaseLift ($\approx 3.0\text{--}3.4\text{ s}$). During certification, however, as larger perturbations induce more unstable ReLU neurons in the hidden layer, the solve time of SDP+RLT scales up to **93.82 s/sample**.
+## Main findings
 
-## Experimental Setup & Baseline Parameters
+* **RLT makes the certificate usable.** Adding pairwise product constraints (Reformulation-Linearization Technique) to the plain SDP
+  tightens the median certified bound by up to **87.1 %** (at `eps_rel = 0.13`: 5.087 → 0.656).
+* **Non-vacuous radius.** "Vacuous" means the bound is `>= 1`, the error of the trivial estimator `f = 0` (because `||x|| = 1`).
+  IBP and Lipschitz bounds are vacuous on 100 % of samples from `eps_rel = 0.05`, plain SDP from `eps_rel = 0.10`.
+  SDP+RLT stays non-vacuous at `eps_rel = 0.13` on **19 of 20** samples. The one exception (test sample 1) has a PGD *lower* bound
+  of 1.05 > 1, so no valid certificate could be below 1 there; SDP+RLT gives 1.076.
+* **Tightness.** Median SDP+RLT / PGD ratio: 1.00 (`eps_rel` 0.01, 0.05), 1.64 (0.10), 2.60 (0.13).
+  With no unstable ReLUs the relaxation is exact (S-lemma), and the certificate matches PGD to within 1e-9.
+* **Speed trade-off.** Network inference takes 0.05 ms per sample versus about 3 s for one PhaseLift solve. Certifying the network is
+  cheap for small perturbations but its cost grows quickly with the number of unstable neurons (see Timing).
 
-* **Architecture & Dataset**:
-  * Model: 3-layer MLP (`256` input measurements $\to$ `128` hidden ReLU units $\to$ `64` output pixels)
-  * Dataset: $8 \times 8$ MNIST phase retrieval (20,000 training samples; $N = 20$ test samples for full Phase 4 certification)
-  * Clean Performance: Clean test Mean Squared Error (MSE) is `0.0398`
-* **Adversarial Perturbations ($\ell_2$ Norm)**:
-  * Mean signal norm: $\mathbb{E}\lVert y \rVert_2 = 29.84$
-  * Relative perturbation levels: $\epsilon_{\text{rel}} \in \{0.01, 0.05, 0.10, 0.13\}$
-  * Corresponding absolute $\ell_2$ radii: $\epsilon \in \{0.30, 1.49, 2.98, 3.88\}$
-* **Solvers & Verification**:
-  * Primary solver: **MOSEK**
-  * Multi-solver cross-validation (Phase 2 / Phase 3): **CLARABEL** and **SCS**, with duality gaps consistently verified on the order of $10^{-11}$ to $10^{-6}$.
+## Setup
 
-## Core Experimental Results
+| Item | Value |
+| --- | --- |
+| Signal | 8×8 MNIST, `n = 64`, normalised to `||x||_2 = 1` |
+| Measurements | `m = 256 = 4n`, Gaussian `A` drawn once (seed 0) and shared by training, testing and PhaseLift; `y_k = <a_k, x>^2` |
+| Network | MLP `256 -> 128 (ReLU) -> 64`, i.e. one hidden layer; sign-invariant loss `min_{s=±1} ||f(y) - s x||^2`; 60 epochs, 20,000 training samples |
+| Clean test error | mean **0.0398**, median 0.0313 (sign-invariant squared error, all 500 test samples) |
+| Perturbation set | full `l2` ball `||delta||_2 <= eps` (so `y + delta` may be negative); PGD uses exactly the same set |
+| Grid | absolute `eps`, reported as `eps_rel = eps / mean||y||_2` with `mean||y||_2 = 29.84`: `{0.01, 0.05, 0.10, 0.13}` = `eps` of `{0.30, 1.49, 2.98, 3.88}` |
+| Samples | first 20 test samples for the full evaluation (Phase 4); 5–10 for the earlier phases |
+| Error metric | squared `l2` error throughout |
 
-### 1. Certification Tightness (`tightness.jpg`)
+## Method
 
-The table below summarizes the **median** worst-case squared error upper bounds (and median ratios relative to empirical PGD lower bounds) across $N = 20$ test samples. The dashed threshold `1.0` denotes the error of the trivial zero estimator ($f = 0$); upper bounds $\ge 1.0$ are considered vacuous:
+For the bound we fix the sign `sigma0` that is best at `delta = 0` and bound `max_{||delta|| <= eps} ||f(y + delta) - sigma0 x||^2`.
+Because `max_delta min_sigma <= min_sigma max_delta`, this also bounds the sign-invariant error.
+(Solving for `sigma = -sigma0` as well and taking the smaller value, `--both_signs`, is supported.)
 
-| Relative Perturbation $\epsilon_{\text{rel}}$ ($\epsilon$) | PGD Lower Bound (Fixed / Inv) | SDP+RLT (Certified Upper) | SDP Plain (Certified Upper) | LipSDP (Lipschitz) | IBP (Interval Bound) | Spectral Lipschitz | Median Ratio (SDP+RLT / PGD) |
+1. **First-layer elimination.** With the thin SVD `W0 = U S V^T`, the reachable set of `W0 delta` is `{U S w : ||w||_2 <= eps}`, so the
+   SDP size does not depend on `m`. A further exact reduction keeps only the span of `w`-directions that appear in some constraint.
+2. **Neuron types.** Pre-activation bounds `[l, u]` come from the exact `l2` bound in the first layer (IBP deeper).
+   Stable neurons are substituted exactly (`z' = 0` if `u <= 0`, `z' = zhat` if `l >= 0`), so no relaxation is introduced for them.
+   Each unstable neuron (`l < 0 < u`) gets `z' >= 0`, `z' >= zhat`, `z'(z' - zhat) = 0`, `(zhat - l)(zhat - u) <= 0` and the triangle constraint.
+3. **RLT (optional, `--rlt on`).** Two products of valid inequalities per unstable neuron: `z'(u - zhat) >= 0` and `(z' - zhat)(zhat - l) >= 0`.
+4. **Rigorous dual evaluation.** Solvers return multipliers only up to tolerance, so the raw optimum is not a certificate. From the
+   multipliers we rebuild the dual slack, add `t (I - B e0 e0^T)` where `||q||^2 <= B` is a valid constraint (`B = 1 + eps^2 + sum u_i^2`),
+   set the free multiplier of `M[0,0] = 1` exactly by a Schur complement, and pay any residual eigenvalue shortfall with `kappa * B`.
+   By weak duality the result is a valid upper bound **up to floating-point arithmetic**, whichever solver produced the multipliers.
+   In the Phase 2–3 logs the correction `t` is at most about 1e-8 and the primal–dual gap is between about 1e-10 and 1e-5.
+
+## Results (Phase 4, 20 test samples, MOSEK)
+
+Median over samples of the worst-case squared error. A bound `>= 1` is vacuous.
+
+| `eps_rel` (`eps`) | PGD lower bound (fixed / inv.) | **SDP+RLT** (upper) | SDP plain (upper) | LipSDP | IBP | Spectral Lipschitz | Ratio SDP+RLT / PGD (median, max) |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **0.01** (`0.30`) | 0.0289 / 0.0289 | **0.0289** | 0.0289 | 0.2014 | 0.2419 | 0.3522 | $1.00\times$ |
-| **0.05** (`1.49`) | 0.0618 / 0.0618 | **0.0637** | 0.1709 | 2.5434 *(vacuous)* | 3.9794 *(vacuous)* | 5.3732 *(vacuous)* | $1.00\times$ |
-| **0.10** (`2.98`) | 0.1436 / 0.1436 | **0.2676** | 1.5224 *(vacuous)* | 9.1646 *(vacuous)* | 24.4160 *(vacuous)* | 20.0144 *(vacuous)* | $1.64\times$ |
-| **0.13** (`3.88`) | 0.2169 / 0.2157 | **0.6563** | 5.0869 *(vacuous)* | 15.1073 *(vacuous)* | 83.7629 *(vacuous)* | 33.2603 *(vacuous)* | $2.60\times$ |
+| 0.01 (0.30) | 0.0289 / 0.0289 | **0.0289** | 0.0289 | 0.2014 | 0.2419 | 0.3522 | 1.00, 1.00 |
+| 0.05 (1.49) | 0.0618 / 0.0618 | **0.0637** | 0.1709 | 2.5434 | 3.9794 | 5.3732 | 1.00, 1.82 |
+| 0.10 (2.98) | 0.1436 / 0.1436 | **0.2676** | 1.5224 | 9.1646 | 24.416 | 20.014 | 1.64, 2.52 |
+| 0.13 (3.88) | 0.2169 / 0.2157 | **0.6563** | 5.0869 | 15.107 | 83.763 | 33.260 | 2.60, 3.91 |
 
-**Key Takeaways:**
-* **Exactness with Zero Unstable Neurons**: At $\epsilon_{\text{rel}} = 0.01$, there are on average only `0.2` unstable neurons (`0` for most samples), making the network locally affine within the perturbation ball. Both SDP and SDP+RLT recover the exact global optimum matching the PGD lower bound (within $< 10^{-9}$).
-* **Decisive Role of RLT Constraints**: For $\epsilon_{\text{rel}} \ge 0.05$ as unstable neurons proliferate, plain SDP loosens rapidly (reaching $23.5\times$ the PGD bound at $\epsilon_{\text{rel}} = 0.13$). SDP+RLT suppresses the upper bound to `0.6563` ($2.60\times$ PGD), making it the only method capable of providing non-vacuous guarantees at $\epsilon_{\text{rel}} = 0.13$.
-* **Comparison with PhaseLift**: PhaseLift achieves near-machine-precision recovery in the noiseless setting ($10^{-28}$ to $10^{-15}$ error) and incurs errors of `0.0006` to `0.046` under perturbed inputs. Note that the PhaseLift curves in `tightness.jpg` evaluate empirical reconstruction error under **PGD attacks generated against the neural network** (`y + delta_PGD`) and **random Gaussian noise** (`y + delta_rand`), rather than PhaseLift's own worst-case adversarial error or a certified upper bound.
+The ratio column is the median (resp. maximum) of the per-sample ratios, which is not the ratio of the medians in the table.
+Fraction of samples with a vacuous bound at `eps_rel = 0.01 / 0.05 / 0.10 / 0.13`: SDP+RLT 0 / 0 / 0 / 5 %, plain SDP 0 / 0 / 100 / 100 %,
+IBP 0 / 100 / 100 / 100 %, LipSDP 0 / 100 / 100 / 100 %.
+Average number of unstable neurons (of 128): 0.2 / 2.9 / 24.9 / 53.4.
 
-### 2. Computational Runtime & Scalability (`timing.png`)
+![tightness](tightness.png)
 
-Per-sample median runtimes across perturbation levels are summarized below:
+PhaseLift is a *different estimator*. Its curves in the figure show its error on `y + delta_PGD` (an attack crafted against the network)
+and on a random Gaussian `delta` of the same norm (median error 0.0006–0.046). They are neither a worst case for PhaseLift nor a certificate.
+Noise-free PhaseLift recovers the signal to machine precision (1e-28 to 1e-15).
 
-| Relative Perturbation $\epsilon_{\text{rel}}$ | Avg. Unstable Neurons (out of 128) | NN Forward Inference (Median) | PhaseLift (Noisy, Median) | SDP Plain (MOSEK, Median) | SDP+RLT (MOSEK, Median) |
-| :---: | :---: | :---: | :---: | :---: | :---: |
-| **0.01** | 0.2 | 0.050 ms | 3.13 s | 0.087 s | **0.073 s** |
-| **0.05** | 2.9 | 0.050 ms | 3.00 s | 0.129 s | **0.130 s** |
-| **0.10** | 24.9 | 0.050 ms | 3.41 s | 2.38 s | **2.95 s** |
-| **0.13** | 53.4 | 0.050 ms | 3.25 s | 56.07 s | **93.82 s** |
+### Timing
 
-**Key Takeaways:**
-* **Inference Speed Advantage**: Neural network forward inference remains constant at `0.050 ms` ($50\ \mu\text{s}$), achieving a $> 60,000\times$ speedup over PhaseLift ($\approx 3.1\text{ s}$). For small-to-moderate perturbations ($\epsilon_{\text{rel}} \le 0.10$), the combined inference and SDP+RLT certification time is still faster than a single PhaseLift solve.
-* **Scalability Bottleneck**: PhaseLift's semidefinite matrix dimension depends solely on the signal dimension, yielding nearly constant runtime across $\epsilon$. In contrast, neural network SDP variable counts scale with the number of unstable neurons (`n_unstable`, e.g., matrix dimension $N$ growing from 20 to 141 in Phase 3). Under larger perturbations tested in Phase 1/2 ($\epsilon_{\text{rel}} = 0.20, 0.50$), unstable neuron counts reach 105--128, causing MOSEK solver timeouts (e.g., `1992 s` for plain SDP on `test#0` at $\epsilon_{\text{rel}} = 0.20$). Consequently, Phase 4 focuses full certification evaluation on $\epsilon_{\text{rel}} \le 0.13$.
+Median seconds per sample on a 2-CPU Colab machine, MOSEK for every SDP (including PhaseLift). The SDP+RLT column is a single solve
+and excludes the extra solves of `--both_signs`.
 
-## Consistency Checks & Future Directions
+| `eps_rel` | Network inference | PhaseLift (`eta = eps`) | SDP plain | SDP+RLT |
+| :---: | :---: | :---: | :---: | :---: |
+| 0.01 | 0.050 ms | 3.13 s | 0.087 s | 0.073 s |
+| 0.05 | 0.050 ms | 3.00 s | 0.129 s | 0.130 s |
+| 0.10 | 0.050 ms | 3.41 s | 2.38 s | 2.95 s |
+| 0.13 | 0.050 ms | 3.25 s | 56.07 s | 93.82 s |
 
-* **Theoretical Ordering & Solver Consistency**: All automated consistency checks (`checks`) in Phase 2 and Phase 3 passed 100%, strictly satisfying the theoretical hierarchy:
+The SDP size grows with the number of unstable neurons (matrix dimension from 20 to about 140 in the evaluated range), and so does the solve time.
+Network inference is a float64 PyTorch forward pass averaged over 200 repetitions, while PhaseLift goes through CVXPY and MOSEK, so the
+speed-up figure (more than 60,000×) compares different software stacks. For `eps_rel <= 0.10`, inference plus certification is still faster than one PhaseLift solve.
 
-  $$\text{Clean} \le \text{PGD}_{\text{inv}} \le \text{PGD}_{\text{fixed}} \le \text{SDP+RLT} \le \text{SDP} \le \text{IBP}$$
+## Sanity checks
 
-  with close agreement across MOSEK, CLARABEL, and SCS.
-* **Future Directions**:
-  1. **Sparse RLT Constraint Selection**: Apply pairwise RLT product constraints selectively to the top-$k$ most critical unstable neurons ranked by pre-activation interval width (`width_mean`), preserving tightness while reducing SDP matrix size.
-  2. **Certification-Aware Training**: Incorporate $\ell_2$ weight regularization or adversarial training to reduce the number of unstable ReLU activations under large input perturbations.
+All checks passed in the logged runs: 143/143 in Phase 2, 423/423 in Phase 3, and 80/80 Phase 4 entries with PGD `<=` every computed SDP bound.
 
-## Repository Structure
+* PGD (fixed sign) `<=` SDP+RLT `<=` SDP, with a tolerance of 1e-6; also PGD `<=` IBP and PGD `<=` Lipschitz.
+* SDP `>=` clean error, and certified bound `>=` solver primal value (weak duality).
+* For the smallest positive `eps` with no unstable neuron the SDP equals PGD (exact relaxation).
+* Sign-invariant PGD `<=` fixed-sign PGD; the Lipschitz constant (0.96 from LipSDP, 1.45 spectral) `>=` the observed local slope (0.048).
+* Random small networks (`m = 64`, hidden widths 16–16 and 24) in Phase 2 are used to validate the pipeline before the trained network.
+* Solver cross-check at `eps_rel = 0.10` (5 samples in Phase 2): MOSEK and Clarabel agree to about 6 digits, SCS is within about 5e-5 (slightly looser).
+  Clarabel is skipped automatically above matrix dimension 178 because of its memory use.
+
+## Limitations
+
+* One network, one random `A`, one training seed, 20 test samples and four perturbation levels.
+* PGD only gives lower bounds, so the ratio to PGD over-estimates the true gap of the certificate.
+* The reported bound is for the fixed sign `sigma0`. PGD never triggered an output sign flip in the evaluated range (0 % of sample/`eps` pairs).
+* The sign-invariant PGD is a separate optimizer and can be weaker than the fixed-sign one on a single sample (sample 5 at `eps_rel = 0.13`: 0.1999 vs 0.4695).
+  There the fixed-sign maximizer does not flip the sign, so its sign-invariant error is also 0.4695, and the medians above are barely affected.
+* Beyond `eps_rel = 0.13` the method becomes impractical. At `eps_rel = 0.20` (105 unstable neurons, matrix dimension 215) one plain SDP solve took
+  1992 s with MOSEK and gave 24.5; SDP+RLT gave 3.12 (still vacuous, PGD 0.47) on the one sample we ran. At `eps_rel = 0.5` all 128 neurons are unstable
+  (dimension 257, Clarabel would need about 9 GB), so we did not run it.
+* `Certified` is meant relative to the relaxation and to floating-point arithmetic; the pre-activation bounds are assumed valid.
+
+## Reproducing
+
+Environment used: Google Colab (2 CPUs), Python 3.13, `cvxpy 1.6.7`, `mosek 11.2.8`, with `numpy`, `torch` and `matplotlib`.
+MOSEK needs a licence (free for academics). Point `MOSEKLM_LICENSE_FILE` at your licence file and **never commit it**.
+Without MOSEK, Clarabel and SCS are used automatically, with much longer solve times for the larger instances.
+
+Run from the directory that contains the `project/` package:
+
+```bash
+# Phase 1: data, PhaseLift baseline, MLP training, PGD, pre-activation bounds
+python -m project.run_phase1 --data mnist --hidden 128 --epochs 60 \
+  --rel_levels 0.01 0.05 0.1 0.2 0.5 --out out_mnist_h128
+
+# Phase 2: SDP prototype (random networks + trained network), RLT trial, solver cross-check, timing
+python -m project.run_phase2 --ckpt out_mnist_h128/ckpt.pt --n_eval 5 --max_N 180 \
+  --solvers CLARABEL SCS MOSEK --out out_mnist_h128/phase2
+
+# Phase 3: trained network, Lipschitz / LipSDP / IBP baselines, first certification round
+python -m project.run_phase3 --ckpt out_mnist_h128/ckpt.pt --n_eval 10 --lipsdp --rlt both \
+  --rel_levels 0.01 0.05 0.1 0.13 --out out_mnist_h128/phase3
+
+# Phase 4: full run on 20 samples, PhaseLift and timing comparison, figures (about 2.3 h on 2 CPUs)
+python -m project.run_phase4 --ckpt out_mnist_h128/ckpt.pt --n_samples 20 --rlt both --both_signs \
+  --lipsdp --solver MOSEK --rel_levels 0.01 0.05 0.1 0.13 --out out_mnist_h128/phase4
+```
+
+Always pass `--rel_levels 0.01 0.05 0.1 0.13` in Phases 3 and 4. Without it the grid stored in the checkpoint (including 0.2 and 0.5) is used, and single solves
+can take hours. Phase 4 can be resumed by re-running the same command. Do not add `--fresh` when resuming, because it archives the existing results.
+`--plot_only` rebuilds the summaries and figures from saved results.
+
+| Phase | Script | Purpose | Outputs |
+| --- | --- | --- | --- |
+| 1 | `run_phase1.py` | data and parameters, PhaseLift, training, PGD, pre-activation bounds | `ckpt.pt`, `phase1_results.json` |
+| 2 | `run_phase2.py` | SDP prototype, sanity checks, RLT trial, solver cross-check, timing | `cache.jsonl`, `phase2_results.json` |
+| 3 | `run_phase3.py` | trained network, cheap baselines, first certification round | `phase3_results.json` |
+| 4 | `run_phase4.py` | full certification, speed benchmark, tightness plot | `results.jsonl`, `summary.json/csv`, `tightness.png`, `timing.png` |
+
+## Repository structure
 
 ```text
 .
-├── README.md          # Project documentation and experimental summary
-├── tightness.jpg      # Certification tightness comparison across perturbation levels
-├── timing.png         # Per-sample solver runtime comparison across perturbation levels
-└── results/           # Phase 1 - Phase 4 detailed logs, solver cross-checks, and bound statistics
+├── project/
+│   ├── __init__.py
+│   ├── common.py          # data, measurement matrix, eps grid
+│   ├── model.py           # MLP and sign-invariant training
+│   ├── pgd.py             # PGD attacks
+│   ├── phaselift.py       # PhaseLift baseline
+│   ├── bounds.py          # pre-activation, IBP output bounds
+│   ├── certify.py         # SDP / SDP+RLT certificate with rigorous dual evaluation
+│   ├── run_phase1.py ... run_phase4.py
+│   └── sanity_*.py        # standalone sanity-check scripts
+├── results/               # logs and bound statistics of Phases 1–4
+├── tightness.png
+├── timing.png
+└── LICENSE                # MIT
 ```
+
+## References
+
+1. V. Antun, F. Renna, C. Poon, B. Adcock, A. C. Hansen. On instabilities of deep learning in image reconstruction and the potential costs of AI. *PNAS* 117(48), 2020.
+2. E. J. Candès, T. Strohmer, V. Voroninski. PhaseLift: exact and stable signal recovery from magnitude measurements via convex programming. *CPAM* 66(8), 2013.
+3. E. J. Candès, X. Li. Solving quadratic equations via PhaseLift when there are about as many equations as unknowns. *FoCM* 14(5), 2014.
+4. S. Dathathri et al. Enabling certification of verification-agnostic networks via memory-efficient semidefinite programming. *NeurIPS* 2020.
+5. M. Fazlyab, A. Robey, H. Hassani, M. Morari, G. J. Pappas. Efficient and accurate estimation of Lipschitz constants for deep neural networks (LipSDP). *NeurIPS* 2019.
+6. M. Fazlyab, M. Morari, G. J. Pappas. Safety verification and robustness analysis of neural networks via quadratic constraints and semidefinite programming. *IEEE TAC* 67(1), 2022.
+7. S. Gowal et al. On the effectiveness of interval bound propagation for training verifiably robust models. arXiv:1810.12715, 2018.
+8. P. Hand, O. Leong, V. Voroninski. Phase retrieval under a generative prior. *NeurIPS* 2018.
+9. A. Raghunathan, J. Steinhardt, P. Liang. Semidefinite relaxations for certifying robustness to adversarial examples. *NeurIPS* 2018.
+10. A. Raghunathan, J. Steinhardt, P. Liang. Certified defenses against adversarial examples. *ICLR* 2018.
+11. H. Zhang et al. Efficient neural network robustness certification with general activation functions (CROWN). *NeurIPS* 2018.
