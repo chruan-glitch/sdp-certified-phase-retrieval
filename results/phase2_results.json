@@ -1,0 +1,1346 @@
+{
+ "args": {
+  "stages": [
+   "cross",
+   "report"
+  ],
+  "mode": null,
+  "ckpt": "out_mnist_h128/ckpt.pt",
+  "n_eval": 5,
+  "start": 0,
+  "eps_idx": null,
+  "n_random": 1,
+  "eps": [
+   0.0,
+   0.001,
+   0.1,
+   0.5,
+   1.0
+  ],
+  "pgd_steps": 300,
+  "pgd_restarts": 20,
+  "solver": null,
+  "solvers": [
+   "CLARABEL",
+   "SCS",
+   "MOSEK"
+  ],
+  "both_signs": false,
+  "max_N": 0,
+  "budget_hours": 2.0,
+  "seed": 0,
+  "out": "out_mnist_h128/phase2"
+ },
+ "solvers": [
+  "CLARABEL",
+  "CVXOPT",
+  "GLPK",
+  "GLPK_MI",
+  "HIGHS",
+  "MOSEK",
+  "OSQP",
+  "SCIPY",
+  "SCS"
+ ],
+ "cvxpy": "1.6.7",
+ "rows": [
+  {
+   "tag": "mnist test#0",
+   "eps": 0.2983557339463989,
+   "sdp": 0.05264748738187898,
+   "sdp_rlt": 0.05264748738187898,
+   "pgd_lb": 0.05264748738109774,
+   "ibp": 0.28696510105999773,
+   "lipschitz": 0.4288260952884881,
+   "clean": 0.050043613494112016,
+   "n_unstable": 0,
+   "N": 20,
+   "primal": 0.05264748072675209,
+   "gap": 6.6551268870784774e-09,
+   "t_corr": 0.0,
+   "lam_min_Z": 2.0634071190586855e-18,
+   "time_sdp": 0.27442704799977946,
+   "time_rlt": 0.1134491040000114,
+   "solver": "MOSEK",
+   "sign_flip": false,
+   "status": "optimal",
+   "status_rlt": "optimal"
+  },
+  {
+   "tag": "mnist test#0",
+   "eps": 1.4917786697319946,
+   "sdp": 0.16923633270745594,
+   "sdp_rlt": 0.08008613664869421,
+   "pgd_lb": 0.0800861302702606,
+   "ibp": 3.987271265851523,
+   "lipschitz": 5.661656367371362,
+   "clean": 0.050043613494112016,
+   "n_unstable": 3,
+   "N": 24,
+   "primal": 0.16923633144695355,
+   "gap": 1.2605023969047835e-09,
+   "t_corr": 1.8307893956116532e-10,
+   "lam_min_Z": -1.6501606424647492e-16,
+   "time_sdp": 0.18191054900034942,
+   "time_rlt": 0.10830532899998957,
+   "solver": "MOSEK",
+   "sign_flip": false,
+   "status": "optimal",
+   "status_rlt": "optimal"
+  },
+  {
+   "tag": "mnist test#0",
+   "eps": 2.983557339463989,
+   "sdp": 1.172674987230326,
+   "sdp_rlt": 0.22989874788874753,
+   "pgd_lb": 0.15998692956961796,
+   "ibp": 20.550082888241207,
+   "lipschitz": 20.56751998351203,
+   "clean": 0.050043613494112016,
+   "n_unstable": 23,
+   "N": 59,
+   "primal": 1.1726749042546407,
+   "gap": 8.297568521165033e-08,
+   "t_corr": 0.0,
+   "lam_min_Z": -1.6538786233828712e-16,
+   "time_sdp": 1.8676544469999499,
+   "time_rlt": 2.237113731999983,
+   "solver": "MOSEK",
+   "sign_flip": false,
+   "status": "optimal",
+   "status_rlt": "optimal",
+   "cross": {
+    "CLARABEL": 1.1726750394842627,
+    "SCS": 1.1727242267982505,
+    "MOSEK": 1.172674987230326
+   }
+  },
+  {
+   "tag": "mnist test#0",
+   "eps": 5.967114678927978,
+   "sdp": 24.47835824493358,
+   "sdp_rlt": NaN,
+   "pgd_lb": 0.4745637365163231,
+   "ibp": 589.372326108525,
+   "lipschitz": 78.26199980258365,
+   "clean": 0.050043613494112016,
+   "n_unstable": 105,
+   "N": 215,
+   "primal": 24.478348127341068,
+   "gap": 1.0117592513125828e-05,
+   "t_corr": 0.0,
+   "lam_min_Z": 1.8447400486168035e-15,
+   "time_sdp": 1992.2207017260002,
+   "time_rlt": NaN,
+   "solver": "MOSEK",
+   "sign_flip": false,
+   "status": "optimal",
+   "status_rlt": "not run"
+  },
+  {
+   "tag": "mnist test#0",
+   "eps": 14.917786697319945,
+   "sdp": NaN,
+   "sdp_rlt": NaN,
+   "pgd_lb": 10.662374937156908,
+   "ibp": 19178.181550209927,
+   "lipschitz": 474.4074599541206,
+   "clean": 0.050043613494112016,
+   "n_unstable": 128,
+   "N": 257,
+   "primal": NaN,
+   "gap": NaN,
+   "t_corr": NaN,
+   "lam_min_Z": NaN,
+   "time_sdp": NaN,
+   "time_rlt": NaN,
+   "solver": null,
+   "sign_flip": false,
+   "status": "not run",
+   "status_rlt": "not run"
+  },
+  {
+   "tag": "mnist test#1",
+   "eps": 0.2983557339463989,
+   "sdp": 0.06887078128646146,
+   "sdp_rlt": 0.06708369948093185,
+   "pgd_lb": 0.06708326561959721,
+   "ibp": 0.35926411751476195,
+   "lipschitz": 0.4486786430471232,
+   "clean": 0.05697336501243063,
+   "n_unstable": 1,
+   "N": 22,
+   "primal": 0.06887078107444636,
+   "gap": 2.1201509992074818e-10,
+   "t_corr": 0.0,
+   "lam_min_Z": -5.079127049667151e-18,
+   "time_sdp": 0.5027105159999792,
+   "time_rlt": 0.0901076959999898,
+   "solver": "MOSEK",
+   "sign_flip": false,
+   "status": "optimal",
+   "status_rlt": "optimal"
+  },
+  {
+   "tag": "mnist test#1",
+   "eps": 1.4917786697319946,
+   "sdp": 0.29214082350764586,
+   "sdp_rlt": 0.1791596966317775,
+   "pgd_lb": 0.1780601468127639,
+   "ibp": 5.336583632330874,
+   "lipschitz": 5.733200100091263,
+   "clean": 0.05697336501243063,
+   "n_unstable": 6,
+   "N": 32,
+   "primal": 0.29214082203126945,
+   "gap": 1.4763764100145238e-09,
+   "t_corr": 7.129752975360814e-11,
+   "lam_min_Z": -2.2323451239664618e-17,
+   "time_sdp": 0.18631782099998873,
+   "time_rlt": 0.197695527999997,
+   "solver": "MOSEK",
+   "sign_flip": false,
+   "status": "optimal",
+   "status_rlt": "optimal"
+  },
+  {
+   "tag": "mnist test#1",
+   "eps": 2.983557339463989,
+   "sdp": 1.4471623134360345,
+   "sdp_rlt": 0.6253053364418438,
+   "pgd_lb": 0.6238660899560372,
+   "ibp": 31.40515246188961,
+   "lipschitz": 20.70367769743352,
+   "clean": 0.05697336501243063,
+   "n_unstable": 17,
+   "N": 53,
+   "primal": 1.4471621465744902,
+   "gap": 1.6686154435952005e-07,
+   "t_corr": 0.0,
+   "lam_min_Z": 2.755264918288342e-16,
+   "time_sdp": 0.9483285009999918,
+   "time_rlt": 1.2843969319999928,
+   "solver": "MOSEK",
+   "sign_flip": false,
+   "status": "optimal",
+   "status_rlt": "optimal",
+   "cross": {
+    "CLARABEL": 1.4471622843475735,
+    "SCS": 1.447210131256555,
+    "MOSEK": 1.4471623134360345
+   }
+  },
+  {
+   "tag": "mnist test#1",
+   "eps": 5.967114678927978,
+   "sdp": NaN,
+   "sdp_rlt": NaN,
+   "pgd_lb": 2.491479964612294,
+   "ibp": 758.5550031224789,
+   "lipschitz": 78.5273854789083,
+   "clean": 0.05697336501243063,
+   "n_unstable": 110,
+   "N": 239,
+   "primal": NaN,
+   "gap": NaN,
+   "t_corr": NaN,
+   "lam_min_Z": NaN,
+   "time_sdp": NaN,
+   "time_rlt": NaN,
+   "solver": null,
+   "sign_flip": false,
+   "status": "not run",
+   "status_rlt": "not run"
+  },
+  {
+   "tag": "mnist test#1",
+   "eps": 14.917786697319945,
+   "sdp": NaN,
+   "sdp_rlt": NaN,
+   "pgd_lb": 18.67962076454348,
+   "ibp": 20199.44633971444,
+   "lipschitz": 475.06052951765463,
+   "clean": 0.05697336501243063,
+   "n_unstable": 128,
+   "N": 257,
+   "primal": NaN,
+   "gap": NaN,
+   "t_corr": NaN,
+   "lam_min_Z": NaN,
+   "time_sdp": NaN,
+   "time_rlt": NaN,
+   "solver": null,
+   "sign_flip": false,
+   "status": "not run",
+   "status_rlt": "not run"
+  },
+  {
+   "tag": "mnist test#2",
+   "eps": 0.2983557339463989,
+   "sdp": 0.016750804232348645,
+   "sdp_rlt": 0.016750804232348645,
+   "pgd_lb": 0.016750804231771742,
+   "ibp": 0.21699297604759682,
+   "lipschitz": 0.3035516006540173,
+   "clean": 0.01435475328056196,
+   "n_unstable": 0,
+   "N": 20,
+   "primal": 0.016750800528741155,
+   "gap": 3.703607490135319e-09,
+   "t_corr": 0.0,
+   "lam_min_Z": 7.624897453634182e-19,
+   "time_sdp": 0.08320132700001182,
+   "time_rlt": 0.07035923099999764,
+   "solver": "MOSEK",
+   "sign_flip": false,
+   "status": "optimal",
+   "status_rlt": "optimal"
+  },
+  {
+   "tag": "mnist test#2",
+   "eps": 1.4917786697319946,
+   "sdp": 0.1460412855564798,
+   "sdp_rlt": 0.05509227896516042,
+   "pgd_lb": 0.043339716525587435,
+   "ibp": 4.074346495399965,
+   "lipschitz": 5.1780393350532075,
+   "clean": 0.01435475328056196,
+   "n_unstable": 6,
+   "N": 29,
+   "primal": 0.14604123683085185,
+   "gap": 4.872562794910884e-08,
+   "t_corr": 2.5821562191246872e-09,
+   "lam_min_Z": -2.1428486025311225e-17,
+   "time_sdp": 0.14675142600000868,
+   "time_rlt": 0.16334202900000605,
+   "solver": "MOSEK",
+   "sign_flip": false,
+   "status": "optimal",
+   "status_rlt": "optimal"
+  },
+  {
+   "tag": "mnist test#2",
+   "eps": 2.983557339463989,
+   "sdp": 2.0320262511016325,
+   "sdp_rlt": 0.30448041292869205,
+   "pgd_lb": 0.12417447016420644,
+   "ibp": 30.200609708896916,
+   "lipschitz": 19.635974779089278,
+   "clean": 0.01435475328056196,
+   "n_unstable": 38,
+   "N": 86,
+   "primal": 2.0320258871236145,
+   "gap": 3.639780179476304e-07,
+   "t_corr": 0.0,
+   "lam_min_Z": -1.5783847997582032e-17,
+   "time_sdp": 9.963817984000002,
+   "time_rlt": 14.179398743999997,
+   "solver": "MOSEK",
+   "sign_flip": false,
+   "status": "optimal",
+   "status_rlt": "optimal",
+   "cross": {
+    "CLARABEL": 2.0320262275879024,
+    "SCS": 2.032051828137253,
+    "MOSEK": 2.0320262511016325
+   }
+  },
+  {
+   "tag": "mnist test#2",
+   "eps": 5.967114678927978,
+   "sdp": NaN,
+   "sdp_rlt": NaN,
+   "pgd_lb": 1.3878712904201305,
+   "ibp": 863.7199541955531,
+   "lipschitz": 76.43459825395168,
+   "clean": 0.01435475328056196,
+   "n_unstable": 118,
+   "N": 247,
+   "primal": NaN,
+   "gap": NaN,
+   "t_corr": NaN,
+   "lam_min_Z": NaN,
+   "time_sdp": NaN,
+   "time_rlt": NaN,
+   "solver": null,
+   "sign_flip": false,
+   "status": "not run",
+   "status_rlt": "not run"
+  },
+  {
+   "tag": "mnist test#2",
+   "eps": 14.917786697319945,
+   "sdp": NaN,
+   "sdp_rlt": NaN,
+   "pgd_lb": 14.302520535310016,
+   "ibp": 20994.543427703837,
+   "lipschitz": 469.89248937286095,
+   "clean": 0.01435475328056196,
+   "n_unstable": 128,
+   "N": 257,
+   "primal": NaN,
+   "gap": NaN,
+   "t_corr": NaN,
+   "lam_min_Z": NaN,
+   "time_sdp": NaN,
+   "time_rlt": NaN,
+   "solver": null,
+   "sign_flip": false,
+   "status": "not run",
+   "status_rlt": "not run"
+  },
+  {
+   "tag": "mnist test#3",
+   "eps": 0.2983557339463989,
+   "sdp": 0.013554606829392992,
+   "sdp_rlt": 0.013554606829392992,
+   "pgd_lb": 0.013554606825230246,
+   "ibp": 0.20227790106701593,
+   "lipschitz": 0.2894215278477276,
+   "clean": 0.011413774314546498,
+   "n_unstable": 0,
+   "N": 20,
+   "primal": 0.013554605683775919,
+   "gap": 1.1456170734280846e-09,
+   "t_corr": 0.0,
+   "lam_min_Z": 2.989924603652396e-19,
+   "time_sdp": 0.07452839900000185,
+   "time_rlt": 0.07138061800000628,
+   "solver": "MOSEK",
+   "sign_flip": false,
+   "status": "optimal",
+   "status_rlt": "optimal"
+  },
+  {
+   "tag": "mnist test#3",
+   "eps": 1.4917786697319946,
+   "sdp": 0.039997261261143675,
+   "sdp_rlt": 0.039997261261143675,
+   "pgd_lb": 0.03999726125907726,
+   "ibp": 3.6467022759779884,
+   "lipschitz": 5.119152886885822,
+   "clean": 0.011413774314546498,
+   "n_unstable": 0,
+   "N": 20,
+   "primal": 0.039997258355233385,
+   "gap": 2.905910290174063e-09,
+   "t_corr": 0.0,
+   "lam_min_Z": 1.3991819484508757e-21,
+   "time_sdp": 0.07251259799997456,
+   "time_rlt": 0.10804400399999281,
+   "solver": "MOSEK",
+   "sign_flip": false,
+   "status": "optimal",
+   "status_rlt": "optimal"
+  },
+  {
+   "tag": "mnist test#3",
+   "eps": 2.983557339463989,
+   "sdp": 1.668334290462611,
+   "sdp_rlt": 0.17537119440153867,
+   "pgd_lb": 0.11905834597447038,
+   "ibp": 23.91672323050721,
+   "lipschitz": 19.521142861720516,
+   "clean": 0.011413774314546498,
+   "n_unstable": 20,
+   "N": 60,
+   "primal": 1.6683340277445575,
+   "gap": 2.627180535341722e-07,
+   "t_corr": 0.0,
+   "lam_min_Z": 1.1956151591399621e-17,
+   "time_sdp": 1.375860982000006,
+   "time_rlt": 1.9541085889999863,
+   "solver": "MOSEK",
+   "sign_flip": false,
+   "status": "optimal",
+   "status_rlt": "optimal",
+   "cross": {
+    "CLARABEL": 1.6683342849647436,
+    "SCS": 1.668333940619884,
+    "MOSEK": 1.668334290462611
+   }
+  },
+  {
+   "tag": "mnist test#3",
+   "eps": 5.967114678927978,
+   "sdp": NaN,
+   "sdp_rlt": NaN,
+   "pgd_lb": 0.4319816265766867,
+   "ibp": 978.8371732910288,
+   "lipschitz": 76.20787539818018,
+   "clean": 0.011413774314546498,
+   "n_unstable": 114,
+   "N": 243,
+   "primal": NaN,
+   "gap": NaN,
+   "t_corr": NaN,
+   "lam_min_Z": NaN,
+   "time_sdp": NaN,
+   "time_rlt": NaN,
+   "solver": null,
+   "sign_flip": false,
+   "status": "not run",
+   "status_rlt": "not run"
+  },
+  {
+   "tag": "mnist test#3",
+   "eps": 14.917786697319945,
+   "sdp": NaN,
+   "sdp_rlt": NaN,
+   "pgd_lb": 13.028918980795652,
+   "ibp": 21752.477602256673,
+   "lipschitz": 469.3300937018813,
+   "clean": 0.011413774314546498,
+   "n_unstable": 128,
+   "N": 257,
+   "primal": NaN,
+   "gap": NaN,
+   "t_corr": NaN,
+   "lam_min_Z": NaN,
+   "time_sdp": NaN,
+   "time_rlt": NaN,
+   "solver": null,
+   "sign_flip": false,
+   "status": "not run",
+   "status_rlt": "not run"
+  },
+  {
+   "tag": "mnist test#4",
+   "eps": 0.2983557339463989,
+   "sdp": 0.027456635247325813,
+   "sdp_rlt": 0.027456635247325813,
+   "pgd_lb": 0.02745663522334142,
+   "ibp": 0.24939528339923478,
+   "lipschitz": 0.34928444024673894,
+   "clean": 0.025554920027586154,
+   "n_unstable": 0,
+   "N": 20,
+   "primal": 0.02745663357314472,
+   "gap": 1.674181092370386e-09,
+   "t_corr": 0.0,
+   "lam_min_Z": 8.800599958055348e-19,
+   "time_sdp": 0.07283119699999929,
+   "time_rlt": 0.07109453600000393,
+   "solver": "MOSEK",
+   "sign_flip": false,
+   "status": "optimal",
+   "status_rlt": "optimal"
+  },
+  {
+   "tag": "mnist test#4",
+   "eps": 1.4917786697319946,
+   "sdp": 0.17678129427923847,
+   "sdp_rlt": 0.054662525694396766,
+   "pgd_lb": 0.05466252077748629,
+   "ibp": 3.8560656823565607,
+   "lipschitz": 5.36190286602872,
+   "clean": 0.025554920027586154,
+   "n_unstable": 1,
+   "N": 22,
+   "primal": 0.17678129348291174,
+   "gap": 7.963267267818708e-10,
+   "t_corr": 2.2609639723031023e-10,
+   "lam_min_Z": 9.841803490770263e-18,
+   "time_sdp": 0.08852227100001642,
+   "time_rlt": 0.08757760599999642,
+   "solver": "MOSEK",
+   "sign_flip": false,
+   "status": "optimal",
+   "status_rlt": "optimal"
+  },
+  {
+   "tag": "mnist test#4",
+   "eps": 2.983557339463989,
+   "sdp": 1.5719046933803997,
+   "sdp_rlt": 0.23340679190895422,
+   "pgd_lb": 0.13499470265372915,
+   "ibp": 26.61814481823518,
+   "lipschitz": 19.992501674293273,
+   "clean": 0.025554920027586154,
+   "n_unstable": 25,
+   "N": 66,
+   "primal": 1.571904317394364,
+   "gap": 3.7598603563893107e-07,
+   "t_corr": 0.0,
+   "lam_min_Z": 4.551100893958765e-16,
+   "time_sdp": 2.1641926689999877,
+   "time_rlt": 4.500335377999988,
+   "solver": "MOSEK",
+   "sign_flip": false,
+   "status": "optimal",
+   "status_rlt": "optimal",
+   "cross": {
+    "CLARABEL": 1.5719046306573496,
+    "SCS": 1.5719473924505651,
+    "MOSEK": 1.5719046933803997
+   }
+  },
+  {
+   "tag": "mnist test#4",
+   "eps": 5.967114678927978,
+   "sdp": NaN,
+   "sdp_rlt": NaN,
+   "pgd_lb": 0.45055886634562353,
+   "ibp": 832.7687517248646,
+   "lipschitz": 77.13645187761267,
+   "clean": 0.025554920027586154,
+   "n_unstable": 108,
+   "N": 237,
+   "primal": NaN,
+   "gap": NaN,
+   "t_corr": NaN,
+   "lam_min_Z": NaN,
+   "time_sdp": NaN,
+   "time_rlt": NaN,
+   "solver": null,
+   "sign_flip": false,
+   "status": "not run",
+   "status_rlt": "not run"
+  },
+  {
+   "tag": "mnist test#4",
+   "eps": 14.917786697319945,
+   "sdp": NaN,
+   "sdp_rlt": NaN,
+   "pgd_lb": 14.75780525690148,
+   "ibp": 20681.42263424555,
+   "lipschitz": 471.6303231818928,
+   "clean": 0.025554920027586154,
+   "n_unstable": 128,
+   "N": 257,
+   "primal": NaN,
+   "gap": NaN,
+   "t_corr": NaN,
+   "lam_min_Z": NaN,
+   "time_sdp": NaN,
+   "time_rlt": NaN,
+   "solver": null,
+   "sign_flip": false,
+   "status": "not run",
+   "status_rlt": "not run"
+  }
+ ],
+ "summary": {
+  "rlt_rel_reduction_median": 0.6567762007701474,
+  "rlt_recommended": true,
+  "solve_time_median": 0.2303724344998841,
+  "solves_in_budget": 31253
+ },
+ "checks": [
+  {
+   "name": "[mnist test#0 eps=0.2984] SDP finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#0 eps=0.2984] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.0526475 SDP=0.0526475"
+  },
+  {
+   "name": "[mnist test#0 eps=0.2984] SDP >= clean error",
+   "passed": true,
+   "detail": "clean=0.0500436"
+  },
+  {
+   "name": "[mnist test#0 eps=0.2984] SDP+RLT finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#0 eps=0.2984] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.0526475 SDP+RLT=0.0526475"
+  },
+  {
+   "name": "[mnist test#0 eps=0.2984] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": "clean=0.0500436"
+  },
+  {
+   "name": "[mnist test#0 eps=0.2984] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#0 eps=0.2984] no unstable neurons: SDP exact (== PGD)",
+   "passed": true,
+   "detail": "SDP=0.0526475 PGD=0.0526475"
+  },
+  {
+   "name": "[mnist test#0 eps=0.2984] certified bound >= solver primal (weak duality)",
+   "passed": true,
+   "detail": "bound=0.0526475 primal=0.0526475"
+  },
+  {
+   "name": "[mnist test#0 eps=1.492] SDP finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#0 eps=1.492] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.0800861 SDP=0.169236"
+  },
+  {
+   "name": "[mnist test#0 eps=1.492] SDP >= clean error",
+   "passed": true,
+   "detail": "clean=0.0500436"
+  },
+  {
+   "name": "[mnist test#0 eps=1.492] SDP+RLT finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#0 eps=1.492] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.0800861 SDP+RLT=0.0800861"
+  },
+  {
+   "name": "[mnist test#0 eps=1.492] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": "clean=0.0500436"
+  },
+  {
+   "name": "[mnist test#0 eps=1.492] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#0 eps=1.492] certified bound >= solver primal (weak duality)",
+   "passed": true,
+   "detail": "bound=0.169236 primal=0.169236"
+  },
+  {
+   "name": "[mnist test#0 eps=2.984] SDP finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#0 eps=2.984] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.159987 SDP=1.17267"
+  },
+  {
+   "name": "[mnist test#0 eps=2.984] SDP >= clean error",
+   "passed": true,
+   "detail": "clean=0.0500436"
+  },
+  {
+   "name": "[mnist test#0 eps=2.984] SDP+RLT finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#0 eps=2.984] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.159987 SDP+RLT=0.229899"
+  },
+  {
+   "name": "[mnist test#0 eps=2.984] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": "clean=0.0500436"
+  },
+  {
+   "name": "[mnist test#0 eps=2.984] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#0 eps=2.984] certified bound >= solver primal (weak duality)",
+   "passed": true,
+   "detail": "bound=1.17267 primal=1.17267"
+  },
+  {
+   "name": "[mnist test#0 eps=2.984] CLARABEL bound >= PGD",
+   "passed": true,
+   "detail": "CLARABEL=1.17268"
+  },
+  {
+   "name": "[mnist test#0 eps=2.984] SCS bound >= PGD",
+   "passed": true,
+   "detail": "SCS=1.17272"
+  },
+  {
+   "name": "[mnist test#0 eps=2.984] MOSEK bound >= PGD",
+   "passed": true,
+   "detail": "MOSEK=1.17267"
+  },
+  {
+   "name": "[mnist test#0 eps=5.967] SDP finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#0 eps=5.967] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.474564 SDP=24.4784"
+  },
+  {
+   "name": "[mnist test#0 eps=5.967] SDP >= clean error",
+   "passed": true,
+   "detail": "clean=0.0500436"
+  },
+  {
+   "name": "[mnist test#0 eps=5.967] certified bound >= solver primal (weak duality)",
+   "passed": true,
+   "detail": "bound=24.4784 primal=24.4783"
+  },
+  {
+   "name": "[mnist test#1 eps=0.2984] SDP finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#1 eps=0.2984] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.0670833 SDP=0.0688708"
+  },
+  {
+   "name": "[mnist test#1 eps=0.2984] SDP >= clean error",
+   "passed": true,
+   "detail": "clean=0.0569734"
+  },
+  {
+   "name": "[mnist test#1 eps=0.2984] SDP+RLT finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#1 eps=0.2984] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.0670833 SDP+RLT=0.0670837"
+  },
+  {
+   "name": "[mnist test#1 eps=0.2984] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": "clean=0.0569734"
+  },
+  {
+   "name": "[mnist test#1 eps=0.2984] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#1 eps=0.2984] certified bound >= solver primal (weak duality)",
+   "passed": true,
+   "detail": "bound=0.0688708 primal=0.0688708"
+  },
+  {
+   "name": "[mnist test#1 eps=1.492] SDP finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#1 eps=1.492] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.17806 SDP=0.292141"
+  },
+  {
+   "name": "[mnist test#1 eps=1.492] SDP >= clean error",
+   "passed": true,
+   "detail": "clean=0.0569734"
+  },
+  {
+   "name": "[mnist test#1 eps=1.492] SDP+RLT finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#1 eps=1.492] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.17806 SDP+RLT=0.17916"
+  },
+  {
+   "name": "[mnist test#1 eps=1.492] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": "clean=0.0569734"
+  },
+  {
+   "name": "[mnist test#1 eps=1.492] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#1 eps=1.492] certified bound >= solver primal (weak duality)",
+   "passed": true,
+   "detail": "bound=0.292141 primal=0.292141"
+  },
+  {
+   "name": "[mnist test#1 eps=2.984] SDP finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#1 eps=2.984] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.623866 SDP=1.44716"
+  },
+  {
+   "name": "[mnist test#1 eps=2.984] SDP >= clean error",
+   "passed": true,
+   "detail": "clean=0.0569734"
+  },
+  {
+   "name": "[mnist test#1 eps=2.984] SDP+RLT finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#1 eps=2.984] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.623866 SDP+RLT=0.625305"
+  },
+  {
+   "name": "[mnist test#1 eps=2.984] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": "clean=0.0569734"
+  },
+  {
+   "name": "[mnist test#1 eps=2.984] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#1 eps=2.984] certified bound >= solver primal (weak duality)",
+   "passed": true,
+   "detail": "bound=1.44716 primal=1.44716"
+  },
+  {
+   "name": "[mnist test#1 eps=2.984] CLARABEL bound >= PGD",
+   "passed": true,
+   "detail": "CLARABEL=1.44716"
+  },
+  {
+   "name": "[mnist test#1 eps=2.984] SCS bound >= PGD",
+   "passed": true,
+   "detail": "SCS=1.44721"
+  },
+  {
+   "name": "[mnist test#1 eps=2.984] MOSEK bound >= PGD",
+   "passed": true,
+   "detail": "MOSEK=1.44716"
+  },
+  {
+   "name": "[mnist test#2 eps=0.2984] SDP finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#2 eps=0.2984] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.0167508 SDP=0.0167508"
+  },
+  {
+   "name": "[mnist test#2 eps=0.2984] SDP >= clean error",
+   "passed": true,
+   "detail": "clean=0.0143548"
+  },
+  {
+   "name": "[mnist test#2 eps=0.2984] SDP+RLT finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#2 eps=0.2984] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.0167508 SDP+RLT=0.0167508"
+  },
+  {
+   "name": "[mnist test#2 eps=0.2984] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": "clean=0.0143548"
+  },
+  {
+   "name": "[mnist test#2 eps=0.2984] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#2 eps=0.2984] no unstable neurons: SDP exact (== PGD)",
+   "passed": true,
+   "detail": "SDP=0.0167508 PGD=0.0167508"
+  },
+  {
+   "name": "[mnist test#2 eps=0.2984] certified bound >= solver primal (weak duality)",
+   "passed": true,
+   "detail": "bound=0.0167508 primal=0.0167508"
+  },
+  {
+   "name": "[mnist test#2 eps=1.492] SDP finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#2 eps=1.492] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.0433397 SDP=0.146041"
+  },
+  {
+   "name": "[mnist test#2 eps=1.492] SDP >= clean error",
+   "passed": true,
+   "detail": "clean=0.0143548"
+  },
+  {
+   "name": "[mnist test#2 eps=1.492] SDP+RLT finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#2 eps=1.492] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.0433397 SDP+RLT=0.0550923"
+  },
+  {
+   "name": "[mnist test#2 eps=1.492] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": "clean=0.0143548"
+  },
+  {
+   "name": "[mnist test#2 eps=1.492] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#2 eps=1.492] certified bound >= solver primal (weak duality)",
+   "passed": true,
+   "detail": "bound=0.146041 primal=0.146041"
+  },
+  {
+   "name": "[mnist test#2 eps=2.984] SDP finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#2 eps=2.984] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.124174 SDP=2.03203"
+  },
+  {
+   "name": "[mnist test#2 eps=2.984] SDP >= clean error",
+   "passed": true,
+   "detail": "clean=0.0143548"
+  },
+  {
+   "name": "[mnist test#2 eps=2.984] SDP+RLT finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#2 eps=2.984] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.124174 SDP+RLT=0.30448"
+  },
+  {
+   "name": "[mnist test#2 eps=2.984] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": "clean=0.0143548"
+  },
+  {
+   "name": "[mnist test#2 eps=2.984] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#2 eps=2.984] certified bound >= solver primal (weak duality)",
+   "passed": true,
+   "detail": "bound=2.03203 primal=2.03203"
+  },
+  {
+   "name": "[mnist test#2 eps=2.984] CLARABEL bound >= PGD",
+   "passed": true,
+   "detail": "CLARABEL=2.03203"
+  },
+  {
+   "name": "[mnist test#2 eps=2.984] SCS bound >= PGD",
+   "passed": true,
+   "detail": "SCS=2.03205"
+  },
+  {
+   "name": "[mnist test#2 eps=2.984] MOSEK bound >= PGD",
+   "passed": true,
+   "detail": "MOSEK=2.03203"
+  },
+  {
+   "name": "[mnist test#3 eps=0.2984] SDP finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#3 eps=0.2984] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.0135546 SDP=0.0135546"
+  },
+  {
+   "name": "[mnist test#3 eps=0.2984] SDP >= clean error",
+   "passed": true,
+   "detail": "clean=0.0114138"
+  },
+  {
+   "name": "[mnist test#3 eps=0.2984] SDP+RLT finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#3 eps=0.2984] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.0135546 SDP+RLT=0.0135546"
+  },
+  {
+   "name": "[mnist test#3 eps=0.2984] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": "clean=0.0114138"
+  },
+  {
+   "name": "[mnist test#3 eps=0.2984] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#3 eps=0.2984] no unstable neurons: SDP exact (== PGD)",
+   "passed": true,
+   "detail": "SDP=0.0135546 PGD=0.0135546"
+  },
+  {
+   "name": "[mnist test#3 eps=0.2984] certified bound >= solver primal (weak duality)",
+   "passed": true,
+   "detail": "bound=0.0135546 primal=0.0135546"
+  },
+  {
+   "name": "[mnist test#3 eps=1.492] SDP finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#3 eps=1.492] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.0399973 SDP=0.0399973"
+  },
+  {
+   "name": "[mnist test#3 eps=1.492] SDP >= clean error",
+   "passed": true,
+   "detail": "clean=0.0114138"
+  },
+  {
+   "name": "[mnist test#3 eps=1.492] SDP+RLT finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#3 eps=1.492] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.0399973 SDP+RLT=0.0399973"
+  },
+  {
+   "name": "[mnist test#3 eps=1.492] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": "clean=0.0114138"
+  },
+  {
+   "name": "[mnist test#3 eps=1.492] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#3 eps=1.492] certified bound >= solver primal (weak duality)",
+   "passed": true,
+   "detail": "bound=0.0399973 primal=0.0399973"
+  },
+  {
+   "name": "[mnist test#3 eps=2.984] SDP finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#3 eps=2.984] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.119058 SDP=1.66833"
+  },
+  {
+   "name": "[mnist test#3 eps=2.984] SDP >= clean error",
+   "passed": true,
+   "detail": "clean=0.0114138"
+  },
+  {
+   "name": "[mnist test#3 eps=2.984] SDP+RLT finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#3 eps=2.984] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.119058 SDP+RLT=0.175371"
+  },
+  {
+   "name": "[mnist test#3 eps=2.984] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": "clean=0.0114138"
+  },
+  {
+   "name": "[mnist test#3 eps=2.984] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#3 eps=2.984] certified bound >= solver primal (weak duality)",
+   "passed": true,
+   "detail": "bound=1.66833 primal=1.66833"
+  },
+  {
+   "name": "[mnist test#3 eps=2.984] CLARABEL bound >= PGD",
+   "passed": true,
+   "detail": "CLARABEL=1.66833"
+  },
+  {
+   "name": "[mnist test#3 eps=2.984] SCS bound >= PGD",
+   "passed": true,
+   "detail": "SCS=1.66833"
+  },
+  {
+   "name": "[mnist test#3 eps=2.984] MOSEK bound >= PGD",
+   "passed": true,
+   "detail": "MOSEK=1.66833"
+  },
+  {
+   "name": "[mnist test#4 eps=0.2984] SDP finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#4 eps=0.2984] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.0274566 SDP=0.0274566"
+  },
+  {
+   "name": "[mnist test#4 eps=0.2984] SDP >= clean error",
+   "passed": true,
+   "detail": "clean=0.0255549"
+  },
+  {
+   "name": "[mnist test#4 eps=0.2984] SDP+RLT finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#4 eps=0.2984] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.0274566 SDP+RLT=0.0274566"
+  },
+  {
+   "name": "[mnist test#4 eps=0.2984] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": "clean=0.0255549"
+  },
+  {
+   "name": "[mnist test#4 eps=0.2984] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#4 eps=0.2984] no unstable neurons: SDP exact (== PGD)",
+   "passed": true,
+   "detail": "SDP=0.0274566 PGD=0.0274566"
+  },
+  {
+   "name": "[mnist test#4 eps=0.2984] certified bound >= solver primal (weak duality)",
+   "passed": true,
+   "detail": "bound=0.0274566 primal=0.0274566"
+  },
+  {
+   "name": "[mnist test#4 eps=1.492] SDP finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#4 eps=1.492] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.0546625 SDP=0.176781"
+  },
+  {
+   "name": "[mnist test#4 eps=1.492] SDP >= clean error",
+   "passed": true,
+   "detail": "clean=0.0255549"
+  },
+  {
+   "name": "[mnist test#4 eps=1.492] SDP+RLT finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#4 eps=1.492] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.0546625 SDP+RLT=0.0546625"
+  },
+  {
+   "name": "[mnist test#4 eps=1.492] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": "clean=0.0255549"
+  },
+  {
+   "name": "[mnist test#4 eps=1.492] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#4 eps=1.492] certified bound >= solver primal (weak duality)",
+   "passed": true,
+   "detail": "bound=0.176781 primal=0.176781"
+  },
+  {
+   "name": "[mnist test#4 eps=2.984] SDP finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#4 eps=2.984] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.134995 SDP=1.5719"
+  },
+  {
+   "name": "[mnist test#4 eps=2.984] SDP >= clean error",
+   "passed": true,
+   "detail": "clean=0.0255549"
+  },
+  {
+   "name": "[mnist test#4 eps=2.984] SDP+RLT finite",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#4 eps=2.984] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.134995 SDP+RLT=0.233407"
+  },
+  {
+   "name": "[mnist test#4 eps=2.984] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": "clean=0.0255549"
+  },
+  {
+   "name": "[mnist test#4 eps=2.984] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[mnist test#4 eps=2.984] certified bound >= solver primal (weak duality)",
+   "passed": true,
+   "detail": "bound=1.5719 primal=1.5719"
+  },
+  {
+   "name": "[mnist test#4 eps=2.984] CLARABEL bound >= PGD",
+   "passed": true,
+   "detail": "CLARABEL=1.5719"
+  },
+  {
+   "name": "[mnist test#4 eps=2.984] SCS bound >= PGD",
+   "passed": true,
+   "detail": "SCS=1.57195"
+  },
+  {
+   "name": "[mnist test#4 eps=2.984] MOSEK bound >= PGD",
+   "passed": true,
+   "detail": "MOSEK=1.5719"
+  }
+ ]
+}

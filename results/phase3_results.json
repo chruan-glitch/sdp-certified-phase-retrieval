@@ -1,0 +1,3671 @@
+{
+ "args": {
+  "ckpt": "out_mnist_h128/ckpt.pt",
+  "n_eval": 10,
+  "rlt": "both",
+  "lipsdp": true,
+  "pgd_steps": 300,
+  "pgd_restarts": 20,
+  "solver": null,
+  "solvers": [
+   "CLARABEL",
+   "SCS",
+   "MOSEK"
+  ],
+  "rel_levels": [
+   0.01,
+   0.05,
+   0.1,
+   0.13
+  ],
+  "seed": 0,
+  "out": "out_mnist_h128/phase3"
+ },
+ "dims": [
+  256,
+  128,
+  64
+ ],
+ "y_norm_stats": {
+  "mean": 29.83557339463989,
+  "std": 1.9362372929256126,
+  "min": 24.188473244597365,
+  "max": 36.28782837293817,
+  "rel_spread": 0.40553452646278004
+ },
+ "eps_abs": [
+  0.2983557339463989,
+  1.4917786697319946,
+  2.983557339463989,
+  3.878624541303186
+ ],
+ "eps_rel": [
+  0.01,
+  0.05,
+  0.1,
+  0.13
+ ],
+ "clean_net_mean": 0.039807976390364395,
+ "clean_net_median": 0.03135231124957401,
+ "phaselift_clean": [
+  {
+   "sample": 0,
+   "phaselift_err": 1.1643078051284352e-27,
+   "phaselift_time": 3.368063424999491,
+   "net_err": 0.050043613494112044
+  },
+  {
+   "sample": 1,
+   "phaselift_err": 9.375952381581493e-27,
+   "phaselift_time": 3.3766856790007296,
+   "net_err": 0.056973365012430624
+  },
+  {
+   "sample": 2,
+   "phaselift_err": 1.7919389724822044e-15,
+   "phaselift_time": 2.9838159390001238,
+   "net_err": 0.014354753280561966
+  },
+  {
+   "sample": 3,
+   "phaselift_err": 1.720062698966976e-18,
+   "phaselift_time": 3.564739394998469,
+   "net_err": 0.01141377431454649
+  },
+  {
+   "sample": 4,
+   "phaselift_err": 2.0103186228458228e-26,
+   "phaselift_time": 3.447385501000099,
+   "net_err": 0.025554920027586154
+  },
+  {
+   "sample": 5,
+   "phaselift_err": 2.71372520558516e-19,
+   "phaselift_time": 2.8085393649998878,
+   "net_err": 0.007848447648477802
+  },
+  {
+   "sample": 6,
+   "phaselift_err": 3.1080466387127566e-28,
+   "phaselift_time": 2.8148208950005937,
+   "net_err": 0.022877040232291056
+  },
+  {
+   "sample": 7,
+   "phaselift_err": 4.4500300567618617e-20,
+   "phaselift_time": 2.5585602690007363,
+   "net_err": 0.07613843663507007
+  },
+  {
+   "sample": 8,
+   "phaselift_err": 2.7723986713090565e-18,
+   "phaselift_time": 3.3257873319998907,
+   "net_err": 0.10952096427228486
+  },
+  {
+   "sample": 9,
+   "phaselift_err": 1.4771447854724038e-17,
+   "phaselift_time": 3.0676608810008474,
+   "net_err": 0.02579897629885112
+  }
+ ],
+ "lipschitz": {
+  "spectral": 1.445066403808168,
+  "lipsdp": 0.9602641098789633,
+  "used": 0.9602641098789633
+ },
+ "rows": [
+  {
+   "sample": 0,
+   "eps": 0.2983557339463989,
+   "eps_rel": 0.01,
+   "sigma0": 1.0,
+   "clean_fixed": 0.050043613494112016,
+   "pgd_fixed": 0.05264748738109774,
+   "pgd_invariant": 0.052647487381088556,
+   "sign_flip": false,
+   "ibp": 0.28696510105999773,
+   "lipschitz": 0.26030873642810815,
+   "lipschitz_spectral": 0.4288260952884881,
+   "sdp": 0.05264748738187898,
+   "sdp_rlt": 0.05264748738187898,
+   "primal": 0.05264748072675209,
+   "gap": 6.6551268870784774e-09,
+   "t_corr": 0.0,
+   "lam_min_Z": 2.0634071190586855e-18,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 0,
+   "N": 20,
+   "time_sdp": 0.0699945670003217,
+   "time_rlt": 0.06944231600027706,
+   "layers": [
+    {
+     "width_mean": 0.3308401599214797,
+     "unstable": 0,
+     "active": 19,
+     "inactive": 109,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 0,
+   "eps": 1.4917786697319946,
+   "eps_rel": 0.05,
+   "sigma0": 1.0,
+   "clean_fixed": 0.050043613494112016,
+   "pgd_fixed": 0.0800861302702606,
+   "pgd_invariant": 0.08008613027023406,
+   "sign_flip": false,
+   "ibp": 3.987271265851523,
+   "lipschitz": 2.7430177038157404,
+   "lipschitz_spectral": 5.661656367371362,
+   "sdp": 0.16923633270745594,
+   "sdp_rlt": 0.08008613664869421,
+   "primal": 0.16923633144695355,
+   "gap": 1.2605023969047835e-09,
+   "t_corr": 1.8307893956116532e-10,
+   "lam_min_Z": -1.6501606424647492e-16,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 3,
+   "N": 24,
+   "time_sdp": 0.10279723100029514,
+   "time_rlt": 0.10319439599879843,
+   "layers": [
+    {
+     "width_mean": 1.6542007996073984,
+     "unstable": 3,
+     "active": 17,
+     "inactive": 108,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 0,
+   "eps": 2.983557339463989,
+   "eps_rel": 0.1,
+   "sigma0": 1.0,
+   "clean_fixed": 0.050043613494112016,
+   "pgd_fixed": 0.15998692956961796,
+   "pgd_invariant": 0.15998692956980315,
+   "sign_flip": false,
+   "ibp": 20.550082888241207,
+   "lipschitz": 9.540112983266486,
+   "lipschitz_spectral": 20.56751998351203,
+   "sdp": 1.172674987230326,
+   "sdp_rlt": 0.22989874788874753,
+   "primal": 1.1726749042546407,
+   "gap": 8.297568521165033e-08,
+   "t_corr": 0.0,
+   "lam_min_Z": -1.6538786233828712e-16,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 23,
+   "N": 59,
+   "time_sdp": 1.2970684490010171,
+   "time_rlt": 1.8022446650011261,
+   "layers": [
+    {
+     "width_mean": 3.308401599214797,
+     "unstable": 23,
+     "active": 12,
+     "inactive": 93,
+     "size": 128
+    }
+   ],
+   "cross": {
+    "CLARABEL": 1.1726750394842627,
+    "SCS": 1.1727242267982505,
+    "MOSEK": 1.172674987230326
+   }
+  },
+  {
+   "sample": 0,
+   "eps": 3.878624541303186,
+   "eps_rel": 0.13,
+   "sigma0": 1.0,
+   "clean_fixed": 0.050043613494112016,
+   "pgd_fixed": 0.2326775877656513,
+   "pgd_invariant": 0.23267758776610792,
+   "sign_flip": false,
+   "ibp": 57.36124949991972,
+   "lipschitz": 15.588348321718911,
+   "lipschitz_spectral": 33.97227856708288,
+   "sdp": 3.241611079597734,
+   "sdp_rlt": 0.4938628540717708,
+   "primal": 3.241610918612873,
+   "gap": 1.6098486099735965e-07,
+   "t_corr": 6.135203972733453e-11,
+   "lam_min_Z": -8.660940018301008e-18,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 46,
+   "N": 100,
+   "time_sdp": 21.210175866999634,
+   "time_rlt": 33.08819186599976,
+   "layers": [
+    {
+     "width_mean": 4.3009220789792355,
+     "unstable": 46,
+     "active": 7,
+     "inactive": 75,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 1,
+   "eps": 0.2983557339463989,
+   "eps_rel": 0.01,
+   "sigma0": 1.0,
+   "clean_fixed": 0.05697336501243063,
+   "pgd_fixed": 0.06708326561959702,
+   "pgd_invariant": 0.0670832656195874,
+   "sign_flip": false,
+   "ibp": 0.35926411751476195,
+   "lipschitz": 0.2758258424071994,
+   "lipschitz_spectral": 0.4486786430471232,
+   "sdp": 0.06887078128646146,
+   "sdp_rlt": 0.06708369948093185,
+   "primal": 0.06887078107444636,
+   "gap": 2.1201509992074818e-10,
+   "t_corr": 0.0,
+   "lam_min_Z": -5.079127049667151e-18,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 1,
+   "N": 22,
+   "time_sdp": 0.08987461700053245,
+   "time_rlt": 0.08718956399934541,
+   "layers": [
+    {
+     "width_mean": 0.33084015992147975,
+     "unstable": 1,
+     "active": 19,
+     "inactive": 108,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 1,
+   "eps": 1.4917786697319946,
+   "eps_rel": 0.05,
+   "sigma0": 1.0,
+   "clean_fixed": 0.05697336501243063,
+   "pgd_fixed": 0.09850500826625708,
+   "pgd_invariant": 0.09850500439535695,
+   "sign_flip": false,
+   "ibp": 5.336583632330874,
+   "lipschitz": 2.7928842276379218,
+   "lipschitz_spectral": 5.733200100091263,
+   "sdp": 0.29214082350764586,
+   "sdp_rlt": 0.1791596966317775,
+   "primal": 0.29214082203126945,
+   "gap": 1.4763764100145238e-09,
+   "t_corr": 7.129752975360814e-11,
+   "lam_min_Z": -2.2323451239664618e-17,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 6,
+   "N": 32,
+   "time_sdp": 0.22544530900086102,
+   "time_rlt": 0.2914376720000291,
+   "layers": [
+    {
+     "width_mean": 1.6542007996073984,
+     "unstable": 6,
+     "active": 19,
+     "inactive": 103,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 1,
+   "eps": 2.983557339463989,
+   "eps_rel": 0.1,
+   "sigma0": 1.0,
+   "clean_fixed": 0.05697336501243063,
+   "pgd_fixed": 0.6238660899560372,
+   "pgd_invariant": 0.623866089955708,
+   "sign_flip": false,
+   "ibp": 31.40515246188961,
+   "lipschitz": 9.632916279392532,
+   "lipschitz_spectral": 20.70367769743352,
+   "sdp": 1.4471623134360345,
+   "sdp_rlt": 0.6253053364418438,
+   "primal": 1.4471621465744902,
+   "gap": 1.6686154435952005e-07,
+   "t_corr": 0.0,
+   "lam_min_Z": 2.755264918288342e-16,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 17,
+   "N": 53,
+   "time_sdp": 0.8720327810005983,
+   "time_rlt": 1.191665580998233,
+   "layers": [
+    {
+     "width_mean": 3.308401599214797,
+     "unstable": 17,
+     "active": 18,
+     "inactive": 93,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 1,
+   "eps": 3.878624541303186,
+   "eps_rel": 0.13,
+   "sigma0": 1.0,
+   "clean_fixed": 0.05697336501243063,
+   "pgd_fixed": 1.047515857978797,
+   "pgd_invariant": 1.0475158579783614,
+   "sign_flip": false,
+   "ibp": 85.32301180200052,
+   "lipschitz": 15.706913681227276,
+   "lipschitz_spectral": 34.14720466972532,
+   "sdp": 4.294897910194201,
+   "sdp_rlt": 1.076326720275562,
+   "primal": 4.294897043797424,
+   "gap": 8.663967765443203e-07,
+   "t_corr": 2.1568310794482786e-10,
+   "lam_min_Z": 2.6275169322875747e-16,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 44,
+   "N": 105,
+   "time_sdp": 25.471719135999592,
+   "time_rlt": 56.02527595399988,
+   "layers": [
+    {
+     "width_mean": 4.3009220789792355,
+     "unstable": 44,
+     "active": 16,
+     "inactive": 68,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 2,
+   "eps": 0.2983557339463989,
+   "eps_rel": 0.01,
+   "sigma0": 1.0,
+   "clean_fixed": 0.01435475328056196,
+   "pgd_fixed": 0.016750804231771742,
+   "pgd_invariant": 0.016750804231763013,
+   "sign_flip": false,
+   "ibp": 0.21699297604759682,
+   "lipschitz": 0.16508913820248838,
+   "lipschitz_spectral": 0.3035516006540173,
+   "sdp": 0.016750804232348645,
+   "sdp_rlt": 0.016750804232348645,
+   "primal": 0.016750800528741155,
+   "gap": 3.703607490135319e-09,
+   "t_corr": 0.0,
+   "lam_min_Z": 7.624897453634182e-19,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 0,
+   "N": 20,
+   "time_sdp": 0.06931022400021902,
+   "time_rlt": 0.06801046800137556,
+   "layers": [
+    {
+     "width_mean": 0.3308401599214797,
+     "unstable": 0,
+     "active": 19,
+     "inactive": 109,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 2,
+   "eps": 1.4917786697319946,
+   "eps_rel": 0.05,
+   "sigma0": 1.0,
+   "clean_fixed": 0.01435475328056196,
+   "pgd_fixed": 0.04333971652602123,
+   "pgd_invariant": 0.04333971652603032,
+   "sign_flip": false,
+   "ibp": 4.074346495399965,
+   "lipschitz": 2.4096751535418415,
+   "lipschitz_spectral": 5.1780393350532075,
+   "sdp": 0.1460412855564798,
+   "sdp_rlt": 0.05509227896516042,
+   "primal": 0.14604123683085185,
+   "gap": 4.872562794910884e-08,
+   "t_corr": 2.5821562191246872e-09,
+   "lam_min_Z": -2.1428486025311225e-17,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 6,
+   "N": 29,
+   "time_sdp": 0.2305003060009767,
+   "time_rlt": 0.16193025599932298,
+   "layers": [
+    {
+     "width_mean": 1.6542007996073984,
+     "unstable": 6,
+     "active": 16,
+     "inactive": 106,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 2,
+   "eps": 2.983557339463989,
+   "eps_rel": 0.1,
+   "sigma0": 1.0,
+   "clean_fixed": 0.01435475328056196,
+   "pgd_fixed": 0.12417447001708319,
+   "pgd_invariant": 0.12417447016520507,
+   "sign_flip": false,
+   "ibp": 30.200609708896916,
+   "lipschitz": 8.90911674293224,
+   "lipschitz_spectral": 19.635974779089278,
+   "sdp": 2.0320262511016325,
+   "sdp_rlt": 0.30448041292869205,
+   "primal": 2.0320258871236145,
+   "gap": 3.639780179476304e-07,
+   "t_corr": 0.0,
+   "lam_min_Z": -1.5783847997582032e-17,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 38,
+   "N": 86,
+   "time_sdp": 9.328599893999126,
+   "time_rlt": 13.651862200000323,
+   "layers": [
+    {
+     "width_mean": 3.308401599214797,
+     "unstable": 38,
+     "active": 9,
+     "inactive": 81,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 2,
+   "eps": 3.878624541303186,
+   "eps_rel": 0.13,
+   "sigma0": 1.0,
+   "clean_fixed": 0.01435475328056196,
+   "pgd_fixed": 0.20092144935706385,
+   "pgd_invariant": 0.20092144935926617,
+   "sign_flip": false,
+   "ibp": 100.61699184158186,
+   "lipschitz": 14.778759867348455,
+   "lipschitz_spectral": 32.771976459397365,
+   "sdp": 5.861375453210512,
+   "sdp_rlt": 0.7863043294643903,
+   "primal": 5.861374511348201,
+   "gap": 9.41862310810393e-07,
+   "t_corr": 0.0,
+   "lam_min_Z": 5.0685724259598774e-17,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 65,
+   "N": 138,
+   "time_sdp": 120.32441669999935,
+   "time_rlt": 174.09660129700023,
+   "layers": [
+    {
+     "width_mean": 4.300922078979236,
+     "unstable": 65,
+     "active": 7,
+     "inactive": 56,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 3,
+   "eps": 0.2983557339463989,
+   "eps_rel": 0.01,
+   "sigma0": 1.0,
+   "clean_fixed": 0.011413774314546498,
+   "pgd_fixed": 0.013554606825230246,
+   "pgd_invariant": 0.013554606825221645,
+   "sign_flip": false,
+   "ibp": 0.20227790106701593,
+   "lipschitz": 0.15471287099742162,
+   "lipschitz_spectral": 0.2894215278477276,
+   "sdp": 0.013554606829392992,
+   "sdp_rlt": 0.013554606829392992,
+   "primal": 0.013554605683775919,
+   "gap": 1.1456170734280846e-09,
+   "t_corr": 0.0,
+   "lam_min_Z": 2.989924603652396e-19,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 0,
+   "N": 20,
+   "time_sdp": 0.07299677400078508,
+   "time_rlt": 0.06885661100022844,
+   "layers": [
+    {
+     "width_mean": 0.3308401599214797,
+     "unstable": 0,
+     "active": 19,
+     "inactive": 109,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 3,
+   "eps": 1.4917786697319946,
+   "eps_rel": 0.05,
+   "sigma0": 1.0,
+   "clean_fixed": 0.011413774314546498,
+   "pgd_fixed": 0.03999726125906341,
+   "pgd_invariant": 0.03999726125901433,
+   "sign_flip": false,
+   "ibp": 3.6467022759779884,
+   "lipschitz": 2.3695577333805695,
+   "lipschitz_spectral": 5.119152886885822,
+   "sdp": 0.039997261261143675,
+   "sdp_rlt": 0.039997261261143675,
+   "primal": 0.039997258355233385,
+   "gap": 2.905910290174063e-09,
+   "t_corr": 0.0,
+   "lam_min_Z": 1.3991819484508757e-21,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 0,
+   "N": 20,
+   "time_sdp": 0.07160939999994298,
+   "time_rlt": 0.07032563199936703,
+   "layers": [
+    {
+     "width_mean": 1.6542007996073984,
+     "unstable": 0,
+     "active": 19,
+     "inactive": 109,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 3,
+   "eps": 2.983557339463989,
+   "eps_rel": 0.1,
+   "sigma0": 1.0,
+   "clean_fixed": 0.011413774314546498,
+   "pgd_fixed": 0.11905834597461955,
+   "pgd_invariant": 0.11905834597448402,
+   "sign_flip": false,
+   "ibp": 23.91672323050721,
+   "lipschitz": 8.83182288157571,
+   "lipschitz_spectral": 19.521142861720516,
+   "sdp": 1.668334290462611,
+   "sdp_rlt": 0.17537119440153867,
+   "primal": 1.6683340277445575,
+   "gap": 2.627180535341722e-07,
+   "t_corr": 0.0,
+   "lam_min_Z": 1.1956151591399621e-17,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 20,
+   "N": 60,
+   "time_sdp": 1.4406821529992158,
+   "time_rlt": 2.8163611439995293,
+   "layers": [
+    {
+     "width_mean": 3.308401599214797,
+     "unstable": 20,
+     "active": 19,
+     "inactive": 89,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 3,
+   "eps": 3.878624541303186,
+   "eps_rel": 0.13,
+   "sigma0": 1.0,
+   "clean_fixed": 0.011413774314546498,
+   "pgd_fixed": 0.1912661273335839,
+   "pgd_invariant": 0.19126612733230347,
+   "sign_flip": false,
+   "ibp": 89.55763199071662,
+   "lipschitz": 14.679160141274773,
+   "lipschitz_spectral": 32.62357726050778,
+   "sdp": 5.574632502234553,
+   "sdp_rlt": 0.5503889457383342,
+   "primal": 5.5746323678540906,
+   "gap": 1.3438046231328826e-07,
+   "t_corr": 4.969837489435256e-11,
+   "lam_min_Z": -3.9158133961354434e-16,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 56,
+   "N": 131,
+   "time_sdp": 82.39362488299957,
+   "time_rlt": 147.51334211599897,
+   "layers": [
+    {
+     "width_mean": 4.3009220789792355,
+     "unstable": 56,
+     "active": 18,
+     "inactive": 54,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 4,
+   "eps": 0.2983557339463989,
+   "eps_rel": 0.01,
+   "sigma0": 1.0,
+   "clean_fixed": 0.025554920027586154,
+   "pgd_fixed": 0.02745663522334142,
+   "pgd_invariant": 0.02745663522333344,
+   "sign_flip": false,
+   "ibp": 0.24939528339923478,
+   "lipschitz": 0.19923668388277666,
+   "lipschitz_spectral": 0.34928444024673894,
+   "sdp": 0.027456635247325813,
+   "sdp_rlt": 0.027456635247325813,
+   "primal": 0.02745663357314472,
+   "gap": 1.674181092370386e-09,
+   "t_corr": 0.0,
+   "lam_min_Z": 8.800599958055348e-19,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 0,
+   "N": 20,
+   "time_sdp": 0.0783279829993262,
+   "time_rlt": 0.07030205199953343,
+   "layers": [
+    {
+     "width_mean": 0.33084015992147975,
+     "unstable": 0,
+     "active": 19,
+     "inactive": 109,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 4,
+   "eps": 1.4917786697319946,
+   "eps_rel": 0.05,
+   "sigma0": 1.0,
+   "clean_fixed": 0.025554920027586154,
+   "pgd_fixed": 0.054662520777486345,
+   "pgd_invariant": 0.054662520777449514,
+   "sign_flip": false,
+   "ibp": 3.8560656823565607,
+   "lipschitz": 2.535612214955186,
+   "lipschitz_spectral": 5.36190286602872,
+   "sdp": 0.17678129427923847,
+   "sdp_rlt": 0.054662525694396766,
+   "primal": 0.17678129348291174,
+   "gap": 7.963267267818708e-10,
+   "t_corr": 2.2609639723031023e-10,
+   "lam_min_Z": 9.841803490770263e-18,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 1,
+   "N": 22,
+   "time_sdp": 0.14050124300047173,
+   "time_rlt": 0.1721157920001133,
+   "layers": [
+    {
+     "width_mean": 1.6542007996073984,
+     "unstable": 1,
+     "active": 19,
+     "inactive": 108,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 4,
+   "eps": 2.983557339463989,
+   "eps_rel": 0.1,
+   "sigma0": 1.0,
+   "clean_fixed": 0.025554920027586154,
+   "pgd_fixed": 0.13499470265373648,
+   "pgd_invariant": 0.13499470265365182,
+   "sign_flip": false,
+   "ibp": 26.61814481823518,
+   "lipschitz": 9.149790699011906,
+   "lipschitz_spectral": 19.992501674293273,
+   "sdp": 1.5719046933803997,
+   "sdp_rlt": 0.23340679190895422,
+   "primal": 1.571904317394364,
+   "gap": 3.7598603563893107e-07,
+   "t_corr": 0.0,
+   "lam_min_Z": 4.551100893958765e-16,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 25,
+   "N": 66,
+   "time_sdp": 2.141178824000235,
+   "time_rlt": 3.1003243880004447,
+   "layers": [
+    {
+     "width_mean": 3.308401599214797,
+     "unstable": 25,
+     "active": 15,
+     "inactive": 88,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 4,
+   "eps": 3.878624541303186,
+   "eps_rel": 0.13,
+   "sigma0": 1.0,
+   "clean_fixed": 0.025554920027586154,
+   "pgd_fixed": 0.20797481006836172,
+   "pgd_invariant": 0.20797481006824578,
+   "sign_flip": false,
+   "ibp": 88.02500530809151,
+   "lipschitz": 15.088275960227914,
+   "lipschitz_spectral": 33.232101373138455,
+   "sdp": 5.116820815115774,
+   "sdp_rlt": 0.6328793202982482,
+   "primal": 5.116817651333452,
+   "gap": 3.1637823214580862e-06,
+   "t_corr": 1.4486625249344333e-09,
+   "lam_min_Z": -8.228369759245762e-16,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 55,
+   "N": 123,
+   "time_sdp": 67.82977411200045,
+   "time_rlt": 87.21711432399934,
+   "layers": [
+    {
+     "width_mean": 4.3009220789792355,
+     "unstable": 55,
+     "active": 12,
+     "inactive": 61,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 5,
+   "eps": 0.2983557339463989,
+   "eps_rel": 0.01,
+   "sigma0": 1.0,
+   "clean_fixed": 0.007848447648477783,
+   "pgd_fixed": 0.010343674296463655,
+   "pgd_invariant": 0.010343674296454058,
+   "sign_flip": false,
+   "ibp": 0.1898595984282201,
+   "lipschitz": 0.140693834540704,
+   "lipschitz_spectral": 0.2701247949380878,
+   "sdp": 0.010343674296467155,
+   "sdp_rlt": 0.010343674296467155,
+   "primal": 0.010343672798082288,
+   "gap": 1.4983848675709233e-09,
+   "t_corr": 0.0,
+   "lam_min_Z": 6.90394867305038e-19,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 0,
+   "N": 20,
+   "time_sdp": 0.09813827499965555,
+   "time_rlt": 0.07337848899987875,
+   "layers": [
+    {
+     "width_mean": 0.3308401599214797,
+     "unstable": 0,
+     "active": 19,
+     "inactive": 109,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 5,
+   "eps": 1.4917786697319946,
+   "eps_rel": 0.05,
+   "sigma0": 1.0,
+   "clean_fixed": 0.007848447648477783,
+   "pgd_fixed": 0.04055943413040614,
+   "pgd_invariant": 0.04055943413037117,
+   "sign_flip": false,
+   "ibp": 3.93496522981167,
+   "lipschitz": 2.313723857761256,
+   "lipschitz_spectral": 5.036930529001897,
+   "sdp": 0.1364603046006776,
+   "sdp_rlt": 0.05469568272683645,
+   "primal": 0.1364602670715473,
+   "gap": 3.7529130303415315e-08,
+   "t_corr": 1.2430516567989973e-09,
+   "lam_min_Z": -1.781861525113408e-17,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 5,
+   "N": 27,
+   "time_sdp": 0.13091161800002737,
+   "time_rlt": 0.17134865499974694,
+   "layers": [
+    {
+     "width_mean": 1.6542007996073986,
+     "unstable": 5,
+     "active": 16,
+     "inactive": 107,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 5,
+   "eps": 2.983557339463989,
+   "eps_rel": 0.1,
+   "sigma0": 1.0,
+   "clean_fixed": 0.007848447648477783,
+   "pgd_fixed": 0.12468404279187643,
+   "pgd_invariant": 0.12468404279180517,
+   "sign_flip": false,
+   "ibp": 26.04358956611175,
+   "lipschitz": 8.723720457003154,
+   "lipschitz_spectral": 19.360263472618737,
+   "sdp": 2.3094998442485553,
+   "sdp_rlt": 0.2672705477007209,
+   "primal": 2.3094932881483583,
+   "gap": 6.556100196952741e-06,
+   "t_corr": 0.0,
+   "lam_min_Z": 3.063808083982849e-16,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 38,
+   "N": 88,
+   "time_sdp": 9.826638407001155,
+   "time_rlt": 15.427826383998763,
+   "layers": [
+    {
+     "width_mean": 3.308401599214797,
+     "unstable": 38,
+     "active": 11,
+     "inactive": 79,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 5,
+   "eps": 3.878624541303186,
+   "eps_rel": 0.13,
+   "sigma0": 1.0,
+   "clean_fixed": 0.007848447648477783,
+   "pgd_fixed": 0.46953915688066344,
+   "pgd_invariant": 0.19993704239461976,
+   "sign_flip": false,
+   "ibp": 95.96788472310433,
+   "lipschitz": 14.539696587330269,
+   "lipschitz_spectral": 32.415503652675284,
+   "sdp": 5.659934012191916,
+   "sdp_rlt": 0.6371089715558824,
+   "primal": 5.659924236762954,
+   "gap": 9.775428961411592e-06,
+   "t_corr": 1.380481823694841e-09,
+   "lam_min_Z": -9.771729342032106e-17,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 67,
+   "N": 141,
+   "time_sdp": 134.90484517599907,
+   "time_rlt": 207.94987364699955,
+   "layers": [
+    {
+     "width_mean": 4.3009220789792355,
+     "unstable": 67,
+     "active": 6,
+     "inactive": 55,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 6,
+   "eps": 0.2983557339463989,
+   "eps_rel": 0.01,
+   "sigma0": 1.0,
+   "clean_fixed": 0.022877040232291073,
+   "pgd_fixed": 0.02740958368175523,
+   "pgd_invariant": 0.027409583681741127,
+   "sign_flip": false,
+   "ibp": 0.23275621437189825,
+   "lipschitz": 0.19162671068252987,
+   "lipschitz_spectral": 0.339184433136035,
+   "sdp": 0.027409583732694136,
+   "sdp_rlt": 0.02740958756769275,
+   "primal": 0.02740958358455901,
+   "gap": 1.481351256937824e-10,
+   "t_corr": 0.0,
+   "lam_min_Z": -2.730996597752335e-18,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 2,
+   "N": 22,
+   "time_sdp": 0.14427254899965192,
+   "time_rlt": 0.13766878499882296,
+   "layers": [
+    {
+     "width_mean": 0.33084015992147964,
+     "unstable": 2,
+     "active": 17,
+     "inactive": 109,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 6,
+   "eps": 1.4917786697319946,
+   "eps_rel": 0.05,
+   "sigma0": 1.0,
+   "clean_fixed": 0.022877040232291073,
+   "pgd_fixed": 0.060710528196432176,
+   "pgd_invariant": 0.060710528196395344,
+   "sign_flip": false,
+   "ibp": 3.620438243928544,
+   "lipschitz": 2.5082738681351326,
+   "lipschitz_spectral": 5.322114349656379,
+   "sdp": 0.17259475430724436,
+   "sdp_rlt": 0.06071052835595228,
+   "primal": 0.17259462568459832,
+   "gap": 1.2862264603397122e-07,
+   "t_corr": 9.887653093840726e-09,
+   "lam_min_Z": 1.3494256346327777e-17,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 4,
+   "N": 25,
+   "time_sdp": 0.11263091699947836,
+   "time_rlt": 0.1219768840001052,
+   "layers": [
+    {
+     "width_mean": 1.6542007996073984,
+     "unstable": 4,
+     "active": 16,
+     "inactive": 108,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 6,
+   "eps": 2.983557339463989,
+   "eps_rel": 0.1,
+   "sigma0": 1.0,
+   "clean_fixed": 0.022877040232291073,
+   "pgd_fixed": 0.14536217322697365,
+   "pgd_invariant": 0.14536217322689826,
+   "sign_flip": false,
+   "ibp": 22.03884792295689,
+   "lipschitz": 9.097791885167092,
+   "lipschitz_spectral": 19.915602521343896,
+   "sdp": 1.6955127444231488,
+   "sdp_rlt": 0.31487214191821383,
+   "primal": 1.6955112255759495,
+   "gap": 1.5188471993443642e-06,
+   "t_corr": 0.0,
+   "lam_min_Z": 4.804568077222436e-16,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 25,
+   "N": 63,
+   "time_sdp": 1.7196566019993043,
+   "time_rlt": 2.193611098000474,
+   "layers": [
+    {
+     "width_mean": 3.308401599214797,
+     "unstable": 25,
+     "active": 12,
+     "inactive": 91,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 6,
+   "eps": 3.878624541303186,
+   "eps_rel": 0.13,
+   "sigma0": 1.0,
+   "clean_fixed": 0.022877040232291073,
+   "pgd_fixed": 0.22064405860899422,
+   "pgd_invariant": 0.22064405835625417,
+   "sign_flip": false,
+   "ibp": 64.0720252641881,
+   "lipschitz": 15.021480866168245,
+   "lipschitz_spectral": 33.13293583824285,
+   "sdp": 4.776800862092877,
+   "sdp_rlt": 0.7558611595597817,
+   "primal": 4.776799307282081,
+   "gap": 1.5548107956675494e-06,
+   "t_corr": 2.527040156572483e-10,
+   "lam_min_Z": -7.99722303235065e-17,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 49,
+   "N": 108,
+   "time_sdp": 28.687606278001113,
+   "time_rlt": 49.680721011998685,
+   "layers": [
+    {
+     "width_mean": 4.300922078979237,
+     "unstable": 49,
+     "active": 9,
+     "inactive": 70,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 7,
+   "eps": 0.2983557339463989,
+   "eps_rel": 0.01,
+   "sigma0": 1.0,
+   "clean_fixed": 0.07613843663507006,
+   "pgd_fixed": 0.08113178192922406,
+   "pgd_invariant": 0.08113178192920896,
+   "sign_flip": false,
+   "ibp": 0.32431014505369254,
+   "lipschitz": 0.31633003057578224,
+   "lipschitz_spectral": 0.4999561721595846,
+   "sdp": 0.08113178205488018,
+   "sdp_rlt": 0.08113178205488018,
+   "primal": 0.0811317715607787,
+   "gap": 1.0494101476687945e-08,
+   "t_corr": 0.0,
+   "lam_min_Z": 5.4117449915697484e-18,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 0,
+   "N": 20,
+   "time_sdp": 0.12188318900007289,
+   "time_rlt": 0.13312748499993177,
+   "layers": [
+    {
+     "width_mean": 0.33084015992147975,
+     "unstable": 0,
+     "active": 19,
+     "inactive": 109,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 7,
+   "eps": 1.4917786697319946,
+   "eps_rel": 0.05,
+   "sigma0": 1.0,
+   "clean_fixed": 0.07613843663507006,
+   "pgd_fixed": 0.11517570363728537,
+   "pgd_invariant": 0.11517570363722765,
+   "sign_flip": false,
+   "ibp": 4.204455281146811,
+   "lipschitz": 2.918744881990279,
+   "lipschitz_spectral": 5.912927459163013,
+   "sdp": 0.2276631352538102,
+   "sdp_rlt": 0.11517572616899471,
+   "primal": 0.22766298225739195,
+   "gap": 1.529964182567234e-07,
+   "t_corr": 1.1374732007517596e-08,
+   "lam_min_Z": -6.261931089711663e-17,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 5,
+   "N": 27,
+   "time_sdp": 0.13180119700155046,
+   "time_rlt": 0.13124465399960172,
+   "layers": [
+    {
+     "width_mean": 1.6542007996073984,
+     "unstable": 5,
+     "active": 16,
+     "inactive": 107,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 7,
+   "eps": 2.983557339463989,
+   "eps_rel": 0.1,
+   "sigma0": 1.0,
+   "clean_fixed": 0.07613843663507006,
+   "pgd_fixed": 0.19878062442765992,
+   "pgd_invariant": 0.19878062442763206,
+   "sign_flip": false,
+   "ibp": 26.468743540138682,
+   "lipschitz": 9.865472516474604,
+   "lipschitz_spectral": 21.043967343954375,
+   "sdp": 1.892337697325361,
+   "sdp_rlt": 0.35134947505070935,
+   "primal": 1.8923370992528905,
+   "gap": 5.980724704368612e-07,
+   "t_corr": 0.0,
+   "lam_min_Z": -2.235634946453165e-16,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 28,
+   "N": 71,
+   "time_sdp": 3.108574048999799,
+   "time_rlt": 6.111068517000604,
+   "layers": [
+    {
+     "width_mean": 3.308401599214797,
+     "unstable": 28,
+     "active": 14,
+     "inactive": 86,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 7,
+   "eps": 3.878624541303186,
+   "eps_rel": 0.13,
+   "sigma0": 1.0,
+   "clean_fixed": 0.07613843663507006,
+   "pgd_fixed": 0.2732273036664044,
+   "pgd_invariant": 0.2732273036664676,
+   "sign_flip": false,
+   "ibp": 85.90155518523103,
+   "lipschitz": 16.00348726794718,
+   "lipschitz_spectral": 34.58383168871564,
+   "sdp": 5.456008978942849,
+   "sdp_rlt": 0.8160399329088506,
+   "primal": 5.4560031612611235,
+   "gap": 5.8176817256949676e-06,
+   "t_corr": 0.0,
+   "lam_min_Z": -4.3542712040160123e-16,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 58,
+   "N": 127,
+   "time_sdp": 82.99786228800076,
+   "time_rlt": 130.81877808199897,
+   "layers": [
+    {
+     "width_mean": 4.300922078979236,
+     "unstable": 58,
+     "active": 10,
+     "inactive": 60,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 8,
+   "eps": 0.2983557339463989,
+   "eps_rel": 0.01,
+   "sigma0": 1.0,
+   "clean_fixed": 0.10952096427228487,
+   "pgd_fixed": 0.11428040724641482,
+   "pgd_invariant": 0.11428040724640022,
+   "sign_flip": false,
+   "ibp": 0.3782613161404457,
+   "lipschitz": 0.3812319323458019,
+   "lipschitz_spectral": 0.5807710552912869,
+   "sdp": 0.1142804072497297,
+   "sdp_rlt": 0.1142804072497297,
+   "primal": 0.11428040696111884,
+   "gap": 2.8861085743514536e-10,
+   "t_corr": 0.0,
+   "lam_min_Z": 4.403883576739658e-18,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 0,
+   "N": 20,
+   "time_sdp": 0.07100057500065304,
+   "time_rlt": 0.0685554730007425,
+   "layers": [
+    {
+     "width_mean": 0.3308401599214797,
+     "unstable": 0,
+     "active": 19,
+     "inactive": 109,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 8,
+   "eps": 1.4917786697319946,
+   "eps_rel": 0.05,
+   "sigma0": 1.0,
+   "clean_fixed": 0.10952096427228487,
+   "pgd_fixed": 0.14617166127143616,
+   "pgd_invariant": 0.14617166119587505,
+   "sign_flip": false,
+   "ibp": 4.075825217531202,
+   "lipschitz": 3.109724280291518,
+   "lipschitz_spectral": 6.183471764272665,
+   "sdp": 0.14617166134678666,
+   "sdp_rlt": 0.14617166380411423,
+   "primal": 0.14617165872342616,
+   "gap": 2.6233605010528294e-09,
+   "t_corr": 0.0,
+   "lam_min_Z": -1.142098197919316e-18,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 1,
+   "N": 21,
+   "time_sdp": 0.11731202999908419,
+   "time_rlt": 0.09872868200000084,
+   "layers": [
+    {
+     "width_mean": 1.6542007996073984,
+     "unstable": 1,
+     "active": 18,
+     "inactive": 109,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 8,
+   "eps": 2.983557339463989,
+   "eps_rel": 0.1,
+   "sigma0": 1.0,
+   "clean_fixed": 0.10952096427228487,
+   "pgd_fixed": 0.22543741196986214,
+   "pgd_invariant": 0.2254374119642905,
+   "sign_flip": false,
+   "ibp": 18.254359850448076,
+   "lipschitz": 10.21404878543987,
+   "lipschitz_spectral": 21.55167342653647,
+   "sdp": 1.159077832938736,
+   "sdp_rlt": 0.23185584635184783,
+   "primal": 1.1590771240456617,
+   "gap": 7.088930742416011e-07,
+   "t_corr": 0.0,
+   "lam_min_Z": -1.1971709502074234e-16,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 14,
+   "N": 43,
+   "time_sdp": 0.410102697000184,
+   "time_rlt": 0.481017743000848,
+   "layers": [
+    {
+     "width_mean": 3.308401599214797,
+     "unstable": 14,
+     "active": 14,
+     "inactive": 100,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 8,
+   "eps": 3.878624541303186,
+   "eps_rel": 0.13,
+   "sigma0": 1.0,
+   "clean_fixed": 0.10952096427228487,
+   "pgd_fixed": 0.29754381106908123,
+   "pgd_invariant": 0.29754381106889954,
+   "sign_flip": false,
+   "ibp": 47.00694977332356,
+   "lipschitz": 16.44662165931086,
+   "lipschitz_spectral": 35.2338348377812,
+   "sdp": 3.2899168673893886,
+   "sdp_rlt": 0.4417405954802831,
+   "primal": 3.289911062786651,
+   "gap": 5.804602737580211e-06,
+   "t_corr": 4.032080085485515e-09,
+   "lam_min_Z": -1.5160426884449692e-16,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 37,
+   "N": 84,
+   "time_sdp": 8.775672069999928,
+   "time_rlt": 11.757771455000693,
+   "layers": [
+    {
+     "width_mean": 4.3009220789792355,
+     "unstable": 37,
+     "active": 9,
+     "inactive": 82,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 9,
+   "eps": 0.2983557339463989,
+   "eps_rel": 0.01,
+   "sigma0": 1.0,
+   "clean_fixed": 0.02579897629885109,
+   "pgd_fixed": 0.0285651436189647,
+   "pgd_invariant": 0.028565143618955086,
+   "sign_flip": false,
+   "ibp": 0.2340797682828999,
+   "lipschitz": 0.19991709980103348,
+   "lipschitz_spectral": 0.3501851582211317,
+   "sdp": 0.02856514361898873,
+   "sdp_rlt": 0.02856514361898873,
+   "primal": 0.02856514137520039,
+   "gap": 2.243788339156838e-09,
+   "t_corr": 0.0,
+   "lam_min_Z": 1.932756679519189e-18,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 0,
+   "N": 20,
+   "time_sdp": 0.06888585900014732,
+   "time_rlt": 0.06777553000029002,
+   "layers": [
+    {
+     "width_mean": 0.33084015992147964,
+     "unstable": 0,
+     "active": 19,
+     "inactive": 109,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 9,
+   "eps": 1.4917786697319946,
+   "eps_rel": 0.05,
+   "sigma0": 1.0,
+   "clean_fixed": 0.02579897629885109,
+   "pgd_fixed": 0.055923587095179084,
+   "pgd_invariant": 0.055923587090535846,
+   "sign_flip": false,
+   "ibp": 3.9489115405361668,
+   "lipschitz": 2.53803806946141,
+   "lipschitz_spectral": 5.365430230815623,
+   "sdp": 0.11850335405704271,
+   "sdp_rlt": 0.056071566922175145,
+   "primal": 0.11850334760433734,
+   "gap": 6.452705370030287e-09,
+   "t_corr": 1.4908640350557278e-09,
+   "lam_min_Z": 4.310368120155702e-18,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 1,
+   "N": 22,
+   "time_sdp": 0.09928366200074379,
+   "time_rlt": 0.08833519499967224,
+   "layers": [
+    {
+     "width_mean": 1.6542007996073984,
+     "unstable": 1,
+     "active": 19,
+     "inactive": 108,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 9,
+   "eps": 2.983557339463989,
+   "eps_rel": 0.1,
+   "sigma0": 1.0,
+   "clean_fixed": 0.02579897629885109,
+   "pgd_fixed": 0.13499217747788392,
+   "pgd_invariant": 0.13499217747810088,
+   "sign_flip": false,
+   "ibp": 20.210365222064006,
+   "lipschitz": 9.154398351753088,
+   "lipschitz_spectral": 19.999312347595822,
+   "sdp": 1.229215915445358,
+   "sdp_rlt": 0.22488259011539435,
+   "primal": 1.2292124965288995,
+   "gap": 3.418916458386434e-06,
+   "t_corr": 0.0,
+   "lam_min_Z": 6.056757435704671e-16,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 18,
+   "N": 51,
+   "time_sdp": 1.000017251000827,
+   "time_rlt": 1.2355171920007706,
+   "layers": [
+    {
+     "width_mean": 3.308401599214797,
+     "unstable": 18,
+     "active": 14,
+     "inactive": 96,
+     "size": 128
+    }
+   ]
+  },
+  {
+   "sample": 9,
+   "eps": 3.878624541303186,
+   "eps_rel": 0.13,
+   "sigma0": 1.0,
+   "clean_fixed": 0.02579897629885109,
+   "pgd_fixed": 0.2071674819231145,
+   "pgd_invariant": 0.20716748192315537,
+   "sign_flip": false,
+   "ibp": 57.378930230987905,
+   "lipschitz": 15.094192691910072,
+   "lipschitz_spectral": 33.240882031550385,
+   "sdp": 4.1393095957914925,
+   "sdp_rlt": 0.48478604094341193,
+   "primal": 4.139309187176119,
+   "gap": 4.0861537353720223e-07,
+   "t_corr": 4.745543445032065e-11,
+   "lam_min_Z": -2.1521251510287155e-16,
+   "status": "optimal",
+   "solver": "MOSEK",
+   "n_unstable": 45,
+   "N": 100,
+   "time_sdp": 20.015776842001287,
+   "time_rlt": 37.8796466900003,
+   "layers": [
+    {
+     "width_mean": 4.3009220789792355,
+     "unstable": 45,
+     "active": 9,
+     "inactive": 74,
+     "size": 128
+    }
+   ]
+  }
+ ],
+ "summary": [
+  {
+   "eps_rel": 0.01,
+   "eps": 0.2983557339463989,
+   "pgd_invariant": 0.04392233900537535,
+   "pgd_fixed": 0.04392233900538606,
+   "sdp": 0.04410109059301678,
+   "sdp_rlt": 0.04392238279596368,
+   "ibp": 0.26741624213657633,
+   "lipschitz": 0.22849728798638455,
+   "n_unstable": 0.3,
+   "flip_frac": 0.0,
+   "time_sdp": 0.08846846120013652,
+   "time_rlt": 0.08443067730004258
+  },
+  {
+   "eps_rel": 0.05,
+   "eps": 1.4917786697319946,
+   "pgd_invariant": 0.07351315474784902,
+   "pgd_fixed": 0.07351315514298276,
+   "sdp": 0.16255902068775252,
+   "sdp_rlt": 0.08418230671792455,
+   "ibp": 4.068556486487131,
+   "lipschitz": 2.6239251990970853,
+   "n_unstable": 3.2,
+   "flip_frac": 0.0,
+   "time_sdp": 0.13627929130034316,
+   "time_rlt": 0.14106378179967577
+  },
+  {
+   "eps_rel": 0.1,
+   "eps": 2.983557339463989,
+   "pgd_invariant": 0.1991336968207579,
+   "pgd_fixed": 0.19913369680653506,
+   "sdp": 1.6177746569992162,
+   "sdp_rlt": 0.2958693084706662,
+   "ibp": 24.570661920948957,
+   "lipschitz": 9.311919158201666,
+   "n_unstable": 24.6,
+   "flip_frac": 0.0,
+   "time_sdp": 3.1144551107001464,
+   "time_rlt": 4.801149891200112
+  },
+  {
+   "eps_rel": 0.13,
+   "eps": 3.878624541303186,
+   "pgd_invariant": 0.30788755299136816,
+   "pgd_fixed": 0.33484776446517156,
+   "sdp": 4.74113080767613,
+   "sdp_rlt": 0.6675298870296515,
+   "ibp": 77.1211235619145,
+   "lipschitz": 15.294693704446397,
+   "n_unstable": 52.2,
+   "flip_frac": 0.0,
+   "time_sdp": 59.26114733520008,
+   "time_rlt": 93.60273164429964
+  }
+ ],
+ "checks": [
+  {
+   "name": "Lipschitz constant >= sampled slope",
+   "passed": true,
+   "detail": "max slope 0.0480 L 0.9603"
+  },
+  {
+   "name": "[s0] eps=0: SDP bound == clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s0 eps_rel=0.01] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s0 eps_rel=0.01] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.0526475 bound=0.0526475"
+  },
+  {
+   "name": "[s0 eps_rel=0.01] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s0 eps_rel=0.01] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s0 eps_rel=0.01] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.0526475 bound=0.0526475"
+  },
+  {
+   "name": "[s0 eps_rel=0.01] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s0 eps_rel=0.01] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s0 eps_rel=0.01] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s0 eps_rel=0.01] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s0 eps_rel=0.01] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.0526475 fixed=0.0526475"
+  },
+  {
+   "name": "[s0 eps_rel=0.01] no unstable neurons: SDP exact (== PGD)",
+   "passed": true,
+   "detail": "SDP=0.0526475 PGD=0.0526475"
+  },
+  {
+   "name": "[s0 eps_rel=0.05] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s0 eps_rel=0.05] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.0800861 bound=0.169236"
+  },
+  {
+   "name": "[s0 eps_rel=0.05] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s0 eps_rel=0.05] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s0 eps_rel=0.05] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.0800861 bound=0.0800861"
+  },
+  {
+   "name": "[s0 eps_rel=0.05] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s0 eps_rel=0.05] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s0 eps_rel=0.05] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s0 eps_rel=0.05] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s0 eps_rel=0.05] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.0800861 fixed=0.0800861"
+  },
+  {
+   "name": "[s0 eps_rel=0.1] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s0 eps_rel=0.1] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.159987 bound=1.17267"
+  },
+  {
+   "name": "[s0 eps_rel=0.1] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s0 eps_rel=0.1] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s0 eps_rel=0.1] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.159987 bound=0.229899"
+  },
+  {
+   "name": "[s0 eps_rel=0.1] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s0 eps_rel=0.1] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s0 eps_rel=0.1] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s0 eps_rel=0.1] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s0 eps_rel=0.1] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.159987 fixed=0.159987"
+  },
+  {
+   "name": "[s0 eps_rel=0.1] CLARABEL bound >= PGD",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s0 eps_rel=0.1] SCS bound >= PGD",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s0 eps_rel=0.1] MOSEK bound >= PGD",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s0 eps_rel=0.13] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s0 eps_rel=0.13] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.232678 bound=3.24161"
+  },
+  {
+   "name": "[s0 eps_rel=0.13] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s0 eps_rel=0.13] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s0 eps_rel=0.13] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.232678 bound=0.493863"
+  },
+  {
+   "name": "[s0 eps_rel=0.13] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s0 eps_rel=0.13] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s0 eps_rel=0.13] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s0 eps_rel=0.13] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s0 eps_rel=0.13] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.232678 fixed=0.232678"
+  },
+  {
+   "name": "[s1] eps=0: SDP bound == clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s1 eps_rel=0.01] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s1 eps_rel=0.01] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.0670833 bound=0.0688708"
+  },
+  {
+   "name": "[s1 eps_rel=0.01] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s1 eps_rel=0.01] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s1 eps_rel=0.01] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.0670833 bound=0.0670837"
+  },
+  {
+   "name": "[s1 eps_rel=0.01] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s1 eps_rel=0.01] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s1 eps_rel=0.01] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s1 eps_rel=0.01] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s1 eps_rel=0.01] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.0670833 fixed=0.0670833"
+  },
+  {
+   "name": "[s1 eps_rel=0.05] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s1 eps_rel=0.05] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.098505 bound=0.292141"
+  },
+  {
+   "name": "[s1 eps_rel=0.05] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s1 eps_rel=0.05] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s1 eps_rel=0.05] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.098505 bound=0.17916"
+  },
+  {
+   "name": "[s1 eps_rel=0.05] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s1 eps_rel=0.05] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s1 eps_rel=0.05] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s1 eps_rel=0.05] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s1 eps_rel=0.05] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.098505 fixed=0.098505"
+  },
+  {
+   "name": "[s1 eps_rel=0.1] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s1 eps_rel=0.1] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.623866 bound=1.44716"
+  },
+  {
+   "name": "[s1 eps_rel=0.1] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s1 eps_rel=0.1] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s1 eps_rel=0.1] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.623866 bound=0.625305"
+  },
+  {
+   "name": "[s1 eps_rel=0.1] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s1 eps_rel=0.1] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s1 eps_rel=0.1] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s1 eps_rel=0.1] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s1 eps_rel=0.1] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.623866 fixed=0.623866"
+  },
+  {
+   "name": "[s1 eps_rel=0.13] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s1 eps_rel=0.13] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=1.04752 bound=4.2949"
+  },
+  {
+   "name": "[s1 eps_rel=0.13] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s1 eps_rel=0.13] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s1 eps_rel=0.13] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=1.04752 bound=1.07633"
+  },
+  {
+   "name": "[s1 eps_rel=0.13] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s1 eps_rel=0.13] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s1 eps_rel=0.13] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s1 eps_rel=0.13] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s1 eps_rel=0.13] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=1.04752 fixed=1.04752"
+  },
+  {
+   "name": "[s2] eps=0: SDP bound == clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s2 eps_rel=0.01] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s2 eps_rel=0.01] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.0167508 bound=0.0167508"
+  },
+  {
+   "name": "[s2 eps_rel=0.01] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s2 eps_rel=0.01] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s2 eps_rel=0.01] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.0167508 bound=0.0167508"
+  },
+  {
+   "name": "[s2 eps_rel=0.01] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s2 eps_rel=0.01] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s2 eps_rel=0.01] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s2 eps_rel=0.01] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s2 eps_rel=0.01] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.0167508 fixed=0.0167508"
+  },
+  {
+   "name": "[s2 eps_rel=0.01] no unstable neurons: SDP exact (== PGD)",
+   "passed": true,
+   "detail": "SDP=0.0167508 PGD=0.0167508"
+  },
+  {
+   "name": "[s2 eps_rel=0.05] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s2 eps_rel=0.05] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.0433397 bound=0.146041"
+  },
+  {
+   "name": "[s2 eps_rel=0.05] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s2 eps_rel=0.05] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s2 eps_rel=0.05] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.0433397 bound=0.0550923"
+  },
+  {
+   "name": "[s2 eps_rel=0.05] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s2 eps_rel=0.05] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s2 eps_rel=0.05] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s2 eps_rel=0.05] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s2 eps_rel=0.05] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.0433397 fixed=0.0433397"
+  },
+  {
+   "name": "[s2 eps_rel=0.1] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s2 eps_rel=0.1] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.124174 bound=2.03203"
+  },
+  {
+   "name": "[s2 eps_rel=0.1] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s2 eps_rel=0.1] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s2 eps_rel=0.1] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.124174 bound=0.30448"
+  },
+  {
+   "name": "[s2 eps_rel=0.1] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s2 eps_rel=0.1] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s2 eps_rel=0.1] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s2 eps_rel=0.1] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s2 eps_rel=0.1] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.124174 fixed=0.124174"
+  },
+  {
+   "name": "[s2 eps_rel=0.13] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s2 eps_rel=0.13] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.200921 bound=5.86138"
+  },
+  {
+   "name": "[s2 eps_rel=0.13] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s2 eps_rel=0.13] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s2 eps_rel=0.13] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.200921 bound=0.786304"
+  },
+  {
+   "name": "[s2 eps_rel=0.13] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s2 eps_rel=0.13] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s2 eps_rel=0.13] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s2 eps_rel=0.13] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s2 eps_rel=0.13] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.200921 fixed=0.200921"
+  },
+  {
+   "name": "[s3] eps=0: SDP bound == clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s3 eps_rel=0.01] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s3 eps_rel=0.01] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.0135546 bound=0.0135546"
+  },
+  {
+   "name": "[s3 eps_rel=0.01] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s3 eps_rel=0.01] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s3 eps_rel=0.01] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.0135546 bound=0.0135546"
+  },
+  {
+   "name": "[s3 eps_rel=0.01] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s3 eps_rel=0.01] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s3 eps_rel=0.01] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s3 eps_rel=0.01] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s3 eps_rel=0.01] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.0135546 fixed=0.0135546"
+  },
+  {
+   "name": "[s3 eps_rel=0.01] no unstable neurons: SDP exact (== PGD)",
+   "passed": true,
+   "detail": "SDP=0.0135546 PGD=0.0135546"
+  },
+  {
+   "name": "[s3 eps_rel=0.05] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s3 eps_rel=0.05] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.0399973 bound=0.0399973"
+  },
+  {
+   "name": "[s3 eps_rel=0.05] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s3 eps_rel=0.05] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s3 eps_rel=0.05] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.0399973 bound=0.0399973"
+  },
+  {
+   "name": "[s3 eps_rel=0.05] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s3 eps_rel=0.05] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s3 eps_rel=0.05] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s3 eps_rel=0.05] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s3 eps_rel=0.05] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.0399973 fixed=0.0399973"
+  },
+  {
+   "name": "[s3 eps_rel=0.05] no unstable neurons: SDP exact (== PGD)",
+   "passed": true,
+   "detail": "SDP=0.0399973 PGD=0.0399973"
+  },
+  {
+   "name": "[s3 eps_rel=0.1] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s3 eps_rel=0.1] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.119058 bound=1.66833"
+  },
+  {
+   "name": "[s3 eps_rel=0.1] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s3 eps_rel=0.1] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s3 eps_rel=0.1] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.119058 bound=0.175371"
+  },
+  {
+   "name": "[s3 eps_rel=0.1] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s3 eps_rel=0.1] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s3 eps_rel=0.1] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s3 eps_rel=0.1] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s3 eps_rel=0.1] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.119058 fixed=0.119058"
+  },
+  {
+   "name": "[s3 eps_rel=0.13] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s3 eps_rel=0.13] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.191266 bound=5.57463"
+  },
+  {
+   "name": "[s3 eps_rel=0.13] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s3 eps_rel=0.13] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s3 eps_rel=0.13] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.191266 bound=0.550389"
+  },
+  {
+   "name": "[s3 eps_rel=0.13] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s3 eps_rel=0.13] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s3 eps_rel=0.13] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s3 eps_rel=0.13] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s3 eps_rel=0.13] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.191266 fixed=0.191266"
+  },
+  {
+   "name": "[s4] eps=0: SDP bound == clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s4 eps_rel=0.01] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s4 eps_rel=0.01] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.0274566 bound=0.0274566"
+  },
+  {
+   "name": "[s4 eps_rel=0.01] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s4 eps_rel=0.01] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s4 eps_rel=0.01] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.0274566 bound=0.0274566"
+  },
+  {
+   "name": "[s4 eps_rel=0.01] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s4 eps_rel=0.01] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s4 eps_rel=0.01] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s4 eps_rel=0.01] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s4 eps_rel=0.01] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.0274566 fixed=0.0274566"
+  },
+  {
+   "name": "[s4 eps_rel=0.01] no unstable neurons: SDP exact (== PGD)",
+   "passed": true,
+   "detail": "SDP=0.0274566 PGD=0.0274566"
+  },
+  {
+   "name": "[s4 eps_rel=0.05] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s4 eps_rel=0.05] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.0546625 bound=0.176781"
+  },
+  {
+   "name": "[s4 eps_rel=0.05] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s4 eps_rel=0.05] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s4 eps_rel=0.05] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.0546625 bound=0.0546625"
+  },
+  {
+   "name": "[s4 eps_rel=0.05] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s4 eps_rel=0.05] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s4 eps_rel=0.05] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s4 eps_rel=0.05] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s4 eps_rel=0.05] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.0546625 fixed=0.0546625"
+  },
+  {
+   "name": "[s4 eps_rel=0.1] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s4 eps_rel=0.1] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.134995 bound=1.5719"
+  },
+  {
+   "name": "[s4 eps_rel=0.1] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s4 eps_rel=0.1] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s4 eps_rel=0.1] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.134995 bound=0.233407"
+  },
+  {
+   "name": "[s4 eps_rel=0.1] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s4 eps_rel=0.1] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s4 eps_rel=0.1] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s4 eps_rel=0.1] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s4 eps_rel=0.1] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.134995 fixed=0.134995"
+  },
+  {
+   "name": "[s4 eps_rel=0.13] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s4 eps_rel=0.13] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.207975 bound=5.11682"
+  },
+  {
+   "name": "[s4 eps_rel=0.13] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s4 eps_rel=0.13] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s4 eps_rel=0.13] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.207975 bound=0.632879"
+  },
+  {
+   "name": "[s4 eps_rel=0.13] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s4 eps_rel=0.13] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s4 eps_rel=0.13] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s4 eps_rel=0.13] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s4 eps_rel=0.13] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.207975 fixed=0.207975"
+  },
+  {
+   "name": "[s5] eps=0: SDP bound == clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s5 eps_rel=0.01] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s5 eps_rel=0.01] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.0103437 bound=0.0103437"
+  },
+  {
+   "name": "[s5 eps_rel=0.01] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s5 eps_rel=0.01] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s5 eps_rel=0.01] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.0103437 bound=0.0103437"
+  },
+  {
+   "name": "[s5 eps_rel=0.01] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s5 eps_rel=0.01] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s5 eps_rel=0.01] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s5 eps_rel=0.01] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s5 eps_rel=0.01] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.0103437 fixed=0.0103437"
+  },
+  {
+   "name": "[s5 eps_rel=0.01] no unstable neurons: SDP exact (== PGD)",
+   "passed": true,
+   "detail": "SDP=0.0103437 PGD=0.0103437"
+  },
+  {
+   "name": "[s5 eps_rel=0.05] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s5 eps_rel=0.05] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.0405594 bound=0.13646"
+  },
+  {
+   "name": "[s5 eps_rel=0.05] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s5 eps_rel=0.05] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s5 eps_rel=0.05] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.0405594 bound=0.0546957"
+  },
+  {
+   "name": "[s5 eps_rel=0.05] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s5 eps_rel=0.05] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s5 eps_rel=0.05] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s5 eps_rel=0.05] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s5 eps_rel=0.05] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.0405594 fixed=0.0405594"
+  },
+  {
+   "name": "[s5 eps_rel=0.1] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s5 eps_rel=0.1] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.124684 bound=2.3095"
+  },
+  {
+   "name": "[s5 eps_rel=0.1] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s5 eps_rel=0.1] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s5 eps_rel=0.1] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.124684 bound=0.267271"
+  },
+  {
+   "name": "[s5 eps_rel=0.1] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s5 eps_rel=0.1] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s5 eps_rel=0.1] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s5 eps_rel=0.1] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s5 eps_rel=0.1] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.124684 fixed=0.124684"
+  },
+  {
+   "name": "[s5 eps_rel=0.13] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s5 eps_rel=0.13] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.469539 bound=5.65993"
+  },
+  {
+   "name": "[s5 eps_rel=0.13] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s5 eps_rel=0.13] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s5 eps_rel=0.13] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.469539 bound=0.637109"
+  },
+  {
+   "name": "[s5 eps_rel=0.13] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s5 eps_rel=0.13] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s5 eps_rel=0.13] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s5 eps_rel=0.13] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s5 eps_rel=0.13] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.199937 fixed=0.469539"
+  },
+  {
+   "name": "[s6] eps=0: SDP bound == clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s6 eps_rel=0.01] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s6 eps_rel=0.01] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.0274096 bound=0.0274096"
+  },
+  {
+   "name": "[s6 eps_rel=0.01] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s6 eps_rel=0.01] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s6 eps_rel=0.01] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.0274096 bound=0.0274096"
+  },
+  {
+   "name": "[s6 eps_rel=0.01] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s6 eps_rel=0.01] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s6 eps_rel=0.01] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s6 eps_rel=0.01] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s6 eps_rel=0.01] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.0274096 fixed=0.0274096"
+  },
+  {
+   "name": "[s6 eps_rel=0.05] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s6 eps_rel=0.05] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.0607105 bound=0.172595"
+  },
+  {
+   "name": "[s6 eps_rel=0.05] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s6 eps_rel=0.05] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s6 eps_rel=0.05] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.0607105 bound=0.0607105"
+  },
+  {
+   "name": "[s6 eps_rel=0.05] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s6 eps_rel=0.05] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s6 eps_rel=0.05] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s6 eps_rel=0.05] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s6 eps_rel=0.05] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.0607105 fixed=0.0607105"
+  },
+  {
+   "name": "[s6 eps_rel=0.1] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s6 eps_rel=0.1] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.145362 bound=1.69551"
+  },
+  {
+   "name": "[s6 eps_rel=0.1] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s6 eps_rel=0.1] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s6 eps_rel=0.1] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.145362 bound=0.314872"
+  },
+  {
+   "name": "[s6 eps_rel=0.1] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s6 eps_rel=0.1] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s6 eps_rel=0.1] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s6 eps_rel=0.1] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s6 eps_rel=0.1] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.145362 fixed=0.145362"
+  },
+  {
+   "name": "[s6 eps_rel=0.13] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s6 eps_rel=0.13] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.220644 bound=4.7768"
+  },
+  {
+   "name": "[s6 eps_rel=0.13] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s6 eps_rel=0.13] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s6 eps_rel=0.13] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.220644 bound=0.755861"
+  },
+  {
+   "name": "[s6 eps_rel=0.13] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s6 eps_rel=0.13] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s6 eps_rel=0.13] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s6 eps_rel=0.13] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s6 eps_rel=0.13] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.220644 fixed=0.220644"
+  },
+  {
+   "name": "[s7] eps=0: SDP bound == clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s7 eps_rel=0.01] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s7 eps_rel=0.01] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.0811318 bound=0.0811318"
+  },
+  {
+   "name": "[s7 eps_rel=0.01] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s7 eps_rel=0.01] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s7 eps_rel=0.01] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.0811318 bound=0.0811318"
+  },
+  {
+   "name": "[s7 eps_rel=0.01] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s7 eps_rel=0.01] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s7 eps_rel=0.01] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s7 eps_rel=0.01] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s7 eps_rel=0.01] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.0811318 fixed=0.0811318"
+  },
+  {
+   "name": "[s7 eps_rel=0.01] no unstable neurons: SDP exact (== PGD)",
+   "passed": true,
+   "detail": "SDP=0.0811318 PGD=0.0811318"
+  },
+  {
+   "name": "[s7 eps_rel=0.05] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s7 eps_rel=0.05] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.115176 bound=0.227663"
+  },
+  {
+   "name": "[s7 eps_rel=0.05] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s7 eps_rel=0.05] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s7 eps_rel=0.05] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.115176 bound=0.115176"
+  },
+  {
+   "name": "[s7 eps_rel=0.05] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s7 eps_rel=0.05] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s7 eps_rel=0.05] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s7 eps_rel=0.05] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s7 eps_rel=0.05] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.115176 fixed=0.115176"
+  },
+  {
+   "name": "[s7 eps_rel=0.1] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s7 eps_rel=0.1] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.198781 bound=1.89234"
+  },
+  {
+   "name": "[s7 eps_rel=0.1] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s7 eps_rel=0.1] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s7 eps_rel=0.1] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.198781 bound=0.351349"
+  },
+  {
+   "name": "[s7 eps_rel=0.1] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s7 eps_rel=0.1] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s7 eps_rel=0.1] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s7 eps_rel=0.1] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s7 eps_rel=0.1] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.198781 fixed=0.198781"
+  },
+  {
+   "name": "[s7 eps_rel=0.13] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s7 eps_rel=0.13] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.273227 bound=5.45601"
+  },
+  {
+   "name": "[s7 eps_rel=0.13] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s7 eps_rel=0.13] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s7 eps_rel=0.13] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.273227 bound=0.81604"
+  },
+  {
+   "name": "[s7 eps_rel=0.13] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s7 eps_rel=0.13] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s7 eps_rel=0.13] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s7 eps_rel=0.13] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s7 eps_rel=0.13] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.273227 fixed=0.273227"
+  },
+  {
+   "name": "[s8] eps=0: SDP bound == clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s8 eps_rel=0.01] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s8 eps_rel=0.01] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.11428 bound=0.11428"
+  },
+  {
+   "name": "[s8 eps_rel=0.01] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s8 eps_rel=0.01] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s8 eps_rel=0.01] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.11428 bound=0.11428"
+  },
+  {
+   "name": "[s8 eps_rel=0.01] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s8 eps_rel=0.01] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s8 eps_rel=0.01] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s8 eps_rel=0.01] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s8 eps_rel=0.01] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.11428 fixed=0.11428"
+  },
+  {
+   "name": "[s8 eps_rel=0.01] no unstable neurons: SDP exact (== PGD)",
+   "passed": true,
+   "detail": "SDP=0.11428 PGD=0.11428"
+  },
+  {
+   "name": "[s8 eps_rel=0.05] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s8 eps_rel=0.05] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.146172 bound=0.146172"
+  },
+  {
+   "name": "[s8 eps_rel=0.05] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s8 eps_rel=0.05] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s8 eps_rel=0.05] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.146172 bound=0.146172"
+  },
+  {
+   "name": "[s8 eps_rel=0.05] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s8 eps_rel=0.05] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s8 eps_rel=0.05] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s8 eps_rel=0.05] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s8 eps_rel=0.05] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.146172 fixed=0.146172"
+  },
+  {
+   "name": "[s8 eps_rel=0.1] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s8 eps_rel=0.1] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.225437 bound=1.15908"
+  },
+  {
+   "name": "[s8 eps_rel=0.1] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s8 eps_rel=0.1] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s8 eps_rel=0.1] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.225437 bound=0.231856"
+  },
+  {
+   "name": "[s8 eps_rel=0.1] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s8 eps_rel=0.1] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s8 eps_rel=0.1] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s8 eps_rel=0.1] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s8 eps_rel=0.1] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.225437 fixed=0.225437"
+  },
+  {
+   "name": "[s8 eps_rel=0.13] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s8 eps_rel=0.13] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.297544 bound=3.28992"
+  },
+  {
+   "name": "[s8 eps_rel=0.13] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s8 eps_rel=0.13] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s8 eps_rel=0.13] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.297544 bound=0.441741"
+  },
+  {
+   "name": "[s8 eps_rel=0.13] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s8 eps_rel=0.13] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s8 eps_rel=0.13] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s8 eps_rel=0.13] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s8 eps_rel=0.13] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.297544 fixed=0.297544"
+  },
+  {
+   "name": "[s9] eps=0: SDP bound == clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s9 eps_rel=0.01] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s9 eps_rel=0.01] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.0285651 bound=0.0285651"
+  },
+  {
+   "name": "[s9 eps_rel=0.01] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s9 eps_rel=0.01] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s9 eps_rel=0.01] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.0285651 bound=0.0285651"
+  },
+  {
+   "name": "[s9 eps_rel=0.01] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s9 eps_rel=0.01] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s9 eps_rel=0.01] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s9 eps_rel=0.01] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s9 eps_rel=0.01] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.0285651 fixed=0.0285651"
+  },
+  {
+   "name": "[s9 eps_rel=0.01] no unstable neurons: SDP exact (== PGD)",
+   "passed": true,
+   "detail": "SDP=0.0285651 PGD=0.0285651"
+  },
+  {
+   "name": "[s9 eps_rel=0.05] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s9 eps_rel=0.05] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.0559236 bound=0.118503"
+  },
+  {
+   "name": "[s9 eps_rel=0.05] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s9 eps_rel=0.05] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s9 eps_rel=0.05] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.0559236 bound=0.0560716"
+  },
+  {
+   "name": "[s9 eps_rel=0.05] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s9 eps_rel=0.05] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s9 eps_rel=0.05] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s9 eps_rel=0.05] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s9 eps_rel=0.05] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.0559236 fixed=0.0559236"
+  },
+  {
+   "name": "[s9 eps_rel=0.1] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s9 eps_rel=0.1] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.134992 bound=1.22922"
+  },
+  {
+   "name": "[s9 eps_rel=0.1] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s9 eps_rel=0.1] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s9 eps_rel=0.1] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.134992 bound=0.224883"
+  },
+  {
+   "name": "[s9 eps_rel=0.1] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s9 eps_rel=0.1] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s9 eps_rel=0.1] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s9 eps_rel=0.1] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s9 eps_rel=0.1] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.134992 fixed=0.134992"
+  },
+  {
+   "name": "[s9 eps_rel=0.13] SDP finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s9 eps_rel=0.13] PGD <= SDP",
+   "passed": true,
+   "detail": "PGD=0.207167 bound=4.13931"
+  },
+  {
+   "name": "[s9 eps_rel=0.13] SDP >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s9 eps_rel=0.13] SDP+RLT finite",
+   "passed": true,
+   "detail": "status=optimal"
+  },
+  {
+   "name": "[s9 eps_rel=0.13] PGD <= SDP+RLT",
+   "passed": true,
+   "detail": "PGD=0.207167 bound=0.484786"
+  },
+  {
+   "name": "[s9 eps_rel=0.13] SDP+RLT >= clean error",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s9 eps_rel=0.13] RLT not looser",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s9 eps_rel=0.13] PGD fixed <= IBP",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s9 eps_rel=0.13] PGD fixed <= Lipschitz",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "[s9 eps_rel=0.13] PGD invariant <= PGD fixed (+tol)",
+   "passed": true,
+   "detail": "inv=0.207167 fixed=0.207167"
+  }
+ ],
+ "solvers": [
+  "CLARABEL",
+  "CVXOPT",
+  "GLPK",
+  "GLPK_MI",
+  "HIGHS",
+  "MOSEK",
+  "OSQP",
+  "SCIPY",
+  "SCS"
+ ],
+ "cvxpy": "1.6.7"
+}

@@ -1,0 +1,89 @@
+{
+ "args": {
+  "ckpt": "out_mnist_h128/ckpt.pt",
+  "n_samples": 20,
+  "start": 0,
+  "rlt": "both",
+  "both_signs": true,
+  "lipsdp": true,
+  "rel_levels": null,
+  "vac": 1.0,
+  "pgd_steps": 300,
+  "pgd_restarts": 20,
+  "solver": "MOSEK",
+  "seed": 0,
+  "out": "out_mnist_h128/phase4",
+  "plot_only": false,
+  "fresh": false,
+  "no_warmup": false
+ },
+ "config": {
+  "schema": 2,
+  "ckpt": "out_mnist_h128/ckpt.pt",
+  "rlt": "both",
+  "both_signs": true,
+  "lipsdp": true,
+  "L_used": 0.960264,
+  "solver": "MOSEK",
+  "pgd_steps": 300,
+  "pgd_restarts": 20,
+  "seed": 0,
+  "eps_rel": [
+   0.01,
+   0.05,
+   0.1,
+   0.2,
+   0.5
+  ]
+ },
+ "dims": [
+  256,
+  128,
+  64
+ ],
+ "data": "mnist",
+ "eps_abs": [
+  0.2983557339463989,
+  1.4917786697319946,
+  2.983557339463989,
+  5.967114678927978,
+  14.917786697319945
+ ],
+ "eps_rel": [
+  0.01,
+  0.05,
+  0.1,
+  0.2,
+  0.5
+ ],
+ "y_norm_stats": {
+  "mean": 29.83557339463989,
+  "std": 1.9362372929256126,
+  "min": 24.188473244597365,
+  "max": 36.28782837293817,
+  "rel_spread": 0.40553452646278004
+ },
+ "clean_net_mean": 0.039807976390364395,
+ "lipschitz": {
+  "spectral": 1.445066403808168,
+  "used": 0.9602641098789633
+ },
+ "solvers": [
+  "CLARABEL",
+  "CVXOPT",
+  "GLPK",
+  "GLPK_MI",
+  "HIGHS",
+  "MOSEK",
+  "OSQP",
+  "SCIPY",
+  "SCS"
+ ],
+ "cvxpy": "1.6.7",
+ "n_cpu": 2,
+ "loadavg_start": [
+  1.51416015625,
+  1.7578125,
+  1.66552734375
+ ]
+}
