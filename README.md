@@ -10,7 +10,7 @@ ECE285 course project (UCSD) by Chengen Ruan and Xinqi Li.
 ## Main findings
 
 * **RLT makes the certificate usable.** Adding pairwise product constraints (Reformulation-Linearization Technique) to the plain SDP
-  tightens the median certified bound by up to **87.1 %** (at `eps_rel = 0.13`: 5.087 → 0.656).
+  tightens the median certified bound by up to **87.1 %** (at `eps_rel = 0.13`: 5.087 → 0.656; per-sample reductions reach 91 %).
 * **Non-vacuous radius.** "Vacuous" means the bound is `>= 1`, the error of the trivial estimator `f = 0` (because `||x|| = 1`).
   IBP and Lipschitz bounds are vacuous on 100 % of samples from `eps_rel = 0.05`, plain SDP from `eps_rel = 0.10`.
   SDP+RLT stays non-vacuous at `eps_rel = 0.13` on **19 of 20** samples. The one exception (test sample 1) has a PGD *lower* bound
@@ -31,13 +31,14 @@ ECE285 course project (UCSD) by Chengen Ruan and Xinqi Li.
 | Perturbation set | full `l2` ball `||delta||_2 <= eps` (so `y + delta` may be negative); PGD uses exactly the same set |
 | Grid | absolute `eps`, reported as `eps_rel = eps / mean||y||_2` with `mean||y||_2 = 29.84`: `{0.01, 0.05, 0.10, 0.13}` = `eps` of `{0.30, 1.49, 2.98, 3.88}` |
 | Samples | first 20 test samples for the full evaluation (Phase 4); 5–10 for the earlier phases |
+| Attack | PGD with 300 steps and 20 random restarts (Phases 2–4), on the same `l2` ball; a fixed-sign attack and a separate sign-invariant attack |
 | Error metric | squared `l2` error throughout |
 
 ## Method
 
 For the bound we fix the sign `sigma0` that is best at `delta = 0` and bound `max_{||delta|| <= eps} ||f(y + delta) - sigma0 x||^2`.
 Because `max_delta min_sigma <= min_sigma max_delta`, this also bounds the sign-invariant error.
-(Solving for `sigma = -sigma0` as well and taking the smaller value, `--both_signs`, is supported.)
+(Phase 4 also solves for `sigma = -sigma0` (`--both_signs`) and keeps the smaller value; see Limitations.)
 
 1. **First-layer elimination.** With the thin SVD `W0 = U S V^T`, the reachable set of `W0 delta` is `{U S w : ||w||_2 <= eps}`, so the
    SDP size does not depend on `m`. A further exact reduction keeps only the span of `w`-directions that appear in some constraint.
@@ -49,7 +50,8 @@ Because `max_delta min_sigma <= min_sigma max_delta`, this also bounds the sign-
    multipliers we rebuild the dual slack, add `t (I - B e0 e0^T)` where `||q||^2 <= B` is a valid constraint (`B = 1 + eps^2 + sum u_i^2`),
    set the free multiplier of `M[0,0] = 1` exactly by a Schur complement, and pay any residual eigenvalue shortfall with `kappa * B`.
    By weak duality the result is a valid upper bound **up to floating-point arithmetic**, whichever solver produced the multipliers.
-   In the Phase 2–3 logs the correction `t` is at most about 1e-8 and the primal–dual gap is between about 1e-10 and 1e-5.
+   In the Phase 4 run (80 solves) the correction `t` is at most 1.8e-9 (non-zero in 15 % of the entries), the smallest eigenvalue of the final
+   dual matrix is at least -2e-14, and the primal–dual gap lies between 3e-10 and 4.4e-6 (median 9e-8). In Phases 2–3 the gap reached 1e-5 on the larger instances.
 
 ## Results (Phase 4, 20 test samples, MOSEK)
 
@@ -71,7 +73,7 @@ Average number of unstable neurons (of 128): 0.2 / 2.9 / 24.9 / 53.4.
 
 PhaseLift is a *different estimator*. Its curves in the figure show its error on `y + delta_PGD` (an attack crafted against the network)
 and on a random Gaussian `delta` of the same norm (median error 0.0006–0.046). They are neither a worst case for PhaseLift nor a certificate.
-Noise-free PhaseLift recovers the signal to machine precision (1e-28 to 1e-15).
+Noise-free PhaseLift recovers the signal essentially exactly (squared error between 3e-28 and 6e-14).
 
 ### Timing
 
@@ -85,27 +87,36 @@ and excludes the extra solves of `--both_signs`.
 | 0.10 | 0.050 ms | 3.41 s | 2.38 s | 2.95 s |
 | 0.13 | 0.050 ms | 3.25 s | 56.07 s | 93.82 s |
 
-The SDP size grows with the number of unstable neurons (matrix dimension from 20 to about 140 in the evaluated range), and so does the solve time.
+The SDP size grows with the number of unstable neurons (matrix dimension 19–22 at `eps_rel = 0.01`, 84–141 at 0.13), and so does the solve time. At 0.13 the slowest single SDP+RLT solve took 209 s (plain SDP: 134 s).
 Network inference is a float64 PyTorch forward pass averaged over 200 repetitions, while PhaseLift goes through CVXPY and MOSEK, so the
 speed-up figure (more than 60,000×) compares different software stacks. For `eps_rel <= 0.10`, inference plus certification is still faster than one PhaseLift solve.
 
 ## Sanity checks
 
-All checks passed in the logged runs: 143/143 in Phase 2, 423/423 in Phase 3, and 80/80 Phase 4 entries with PGD `<=` every computed SDP bound.
+All checks passed in the logged runs: 143/143 in Phase 2 (trained network; 88/88 more on random networks), 423/423 in Phase 3, and 80/80 Phase 4 entries with PGD `<=` every computed SDP bound.
 
 * PGD (fixed sign) `<=` SDP+RLT `<=` SDP, with a tolerance of 1e-6; also PGD `<=` IBP and PGD `<=` Lipschitz.
 * SDP `>=` clean error, and certified bound `>=` solver primal value (weak duality).
 * For the smallest positive `eps` with no unstable neuron the SDP equals PGD (exact relaxation).
 * Sign-invariant PGD `<=` fixed-sign PGD; the Lipschitz constant (0.96 from LipSDP, 1.45 spectral) `>=` the observed local slope (0.048).
-* Random small networks (`m = 64`, hidden widths 16–16 and 24) in Phase 2 are used to validate the pipeline before the trained network.
-* Solver cross-check at `eps_rel = 0.10` (5 samples in Phase 2): MOSEK and Clarabel agree to about 6 digits, SCS is within about 5e-5 (slightly looser).
+* Random-network prototype (`python -m project.run_phase2 --out out_random`, no `--ckpt`, about 1 s per solve): two untrained ReLU networks with `m = 64`
+  (hidden widths 16–16 and 24), absolute `eps` in {0, 0.001, 0.1, 0.5, 1.0}, MOSEK. All 88/88 checks passed. This is a pipeline check on arbitrary weights, not a result about the trained network.
+  * Single hidden layer (24): the plain SDP matches PGD to within 1e-6 relative at every `eps`, including 9 unstable neurons at `eps = 1.0`. RLT gives no gain here.
+  * Two hidden layers (16–16): at `eps = 0.5` (17 unstable neurons) plain SDP is 1% above PGD and SDP+RLT equals PGD (4.5374). At `eps = 1.0` (25 unstable) plain SDP is 9.28, SDP+RLT 7.45 and PGD 7.31 (ratio 1.02).
+  * IBP and the spectral Lipschitz bound are far looser on the same instances (at `eps = 1.0`: 143 and 38 against PGD 7.3 for the 16–16 network).
+  * Solver cross-check at `eps = 0.5`: Clarabel and MOSEK agree to 1e-6 or better. SCS is looser by 6e-4 on the 16–16 network (gap 5e-4, `t` 3e-5) and agrees to 1e-7 on the 24 network.
+  * One draw per architecture, so these show correctness, not typical tightness. The 1e-6 differences between plain SDP and SDP+RLT on the 24 network are solver tolerance, not a real difference.
+* Solver cross-check at `eps_rel = 0.10` (5 samples in Phase 2): MOSEK and Clarabel agree to about 6 digits, SCS is within 5e-5 of MOSEK. SCS has a larger primal–dual gap (up to 7e-5, with a correction `t` up to 1.7e-6),
+  which the rigorous dual evaluation absorbs, so its bound is valid as well.
   Clarabel is skipped automatically above matrix dimension 178 because of its memory use.
 
 ## Limitations
 
 * One network, one random `A`, one training seed, 20 test samples and four perturbation levels.
 * PGD only gives lower bounds, so the ratio to PGD over-estimates the true gap of the certificate.
-* The reported bound is for the fixed sign `sigma0`. PGD never triggered an output sign flip in the evaluated range (0 % of sample/`eps` pairs).
+* The reported bound is for the fixed sign `sigma0`. Phase 4 also solved for `sigma = -sigma0` and kept the smaller value, but that bound was at least 3.3
+  in every one of the 80 entries (more than 5 times the `sigma0` bound), so the minimum was always the `sigma0` bound. PGD never triggered an output sign flip
+  in the evaluated range (0 % of sample/`eps` pairs).
 * The sign-invariant PGD is a separate optimizer and can be weaker than the fixed-sign one on a single sample (sample 5 at `eps_rel = 0.13`: 0.1999 vs 0.4695).
   There the fixed-sign maximizer does not flip the sign, so its sign-invariant error is also 0.4695, and the medians above are barely affected.
 * Beyond `eps_rel = 0.13` the method becomes impractical. At `eps_rel = 0.20` (105 unstable neurons, matrix dimension 215) one plain SDP solve took
@@ -118,6 +129,9 @@ All checks passed in the logged runs: 143/143 in Phase 2, 423/423 in Phase 3, an
 Environment used: Google Colab (2 CPUs), Python 3.13, `cvxpy 1.6.7`, `mosek 11.2.8`, with `numpy`, `torch` and `matplotlib`.
 MOSEK needs a licence (free for academics). Point `MOSEKLM_LICENSE_FILE` at your licence file and **never commit it**.
 Without MOSEK, Clarabel and SCS are used automatically, with much longer solve times for the larger instances.
+
+The trained network (weights and the measurement matrix `A`, 362 KB) is provided as `ckpt.pt`. Place it at `out_mnist_h128/ckpt.pt` to run Phases 2–4 without retraining.
+The test signals are regenerated from MNIST with the same seed, so the first 20 test samples are the ones reported here.
 
 Run from the directory that contains the `project/` package:
 
